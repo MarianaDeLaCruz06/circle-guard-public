@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Testcontainers
-@Tag("integration")
+@Tag("container")
 public class AdministrativeCorrectionTest {
 
     @Container

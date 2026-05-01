@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @Testcontainers
-@Tag("integration")
+@Tag("performance")
 public class PromotionPerformanceTest {
 
     @Container

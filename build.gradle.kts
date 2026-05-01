@@ -45,7 +45,7 @@ subprojects {
 
     tasks.named<Test>("test") {
         useJUnitPlatform {
-            excludeTags("integration")
+            excludeTags("integration", "container", "performance")
         }
     }
 

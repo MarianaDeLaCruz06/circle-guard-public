@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Testcontainers
-@Tag("integration")
+@Tag("container")
 public class HealthStatusReevaluationTest {
 
     @Container
