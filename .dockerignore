@@ -1,0 +1,10 @@
+.git
+.gradle
+build
+**/build
+**/bin
+mobile/node_modules
+mobile/.expo
+scratch
+*.log
+*.tmp
