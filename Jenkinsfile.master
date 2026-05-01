@@ -1,0 +1,157 @@
+pipeline {
+    agent any
+
+    environment {
+        KUBE_NAMESPACE = 'circleguard-master'
+        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
+        RELEASE_NOTES_FILE = 'release-notes.md'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Gradle') {
+            steps {
+                script {
+                    runGradle('bootJar')
+                }
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                script {
+                    runGradle('test')
+                }
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'services/*/build/test-results/test/*.xml'
+                }
+            }
+        }
+
+        stage('Integration Tests') {
+            steps {
+                script {
+                    runGradle('integrationTest')
+                }
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'services/*/build/test-results/integrationTest/*.xml'
+                }
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                script {
+                    buildDockerImages()
+                }
+            }
+        }
+
+        stage('Deploy Kubernetes Master') {
+            steps {
+                script {
+                    kubectlApply()
+                    rolloutAll()
+                }
+            }
+        }
+
+        stage('Smoke Tests') {
+            steps {
+                script {
+                    smokeTest('circleguard-auth-service', '8180')
+                    smokeTest('circleguard-identity-service', '8083')
+                    smokeTest('circleguard-form-service', '8086')
+                    smokeTest('circleguard-promotion-service', '8088')
+                    smokeTest('circleguard-notification-service', '8082')
+                    smokeTest('circleguard-gateway-service', '8087')
+                }
+            }
+        }
+
+        stage('Generate Release Notes') {
+            steps {
+                script {
+                    generateReleaseNotes()
+                }
+                archiveArtifacts artifacts: 'release-notes.md', fingerprint: true
+            }
+        }
+    }
+}
+
+def serviceList() {
+    return env.SERVICES.split(' ')
+}
+
+def runCommand(String command) {
+    if (isUnix()) {
+        sh command
+    } else {
+        bat command
+    }
+}
+
+def runGradle(String taskName) {
+    def tasks = serviceList().collect { ":services:${it}:${taskName}" }.join(' ')
+    runCommand("${isUnix() ? './gradlew' : 'gradlew.bat'} ${tasks}")
+}
+
+def buildDockerImages() {
+    serviceList().each { service ->
+        runCommand("docker build -f services/${service}/Dockerfile -t ${service}:local .")
+    }
+}
+
+def kubectlApply() {
+    runCommand("kubectl apply -f k8s/namespace.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/config.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/infrastructure.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/services.yaml")
+}
+
+def rolloutAll() {
+    serviceList().each { service ->
+        runCommand("kubectl rollout status deployment/${service} -n ${env.KUBE_NAMESPACE} --timeout=180s")
+    }
+    runCommand("kubectl get pods -n ${env.KUBE_NAMESPACE}")
+    runCommand("kubectl get svc -n ${env.KUBE_NAMESPACE}")
+}
+
+def smokeTest(String service, String port) {
+    def pod = "smoke-${service}".take(63).replaceAll('-$', '')
+    runCommand("kubectl run ${pod} -n ${env.KUBE_NAMESPACE} --rm -i --restart=Never --image=curlimages/curl:8.10.1 --command -- curl -sS --max-time 10 -o /dev/null http://${service}:${port}/")
+}
+
+def generateReleaseNotes() {
+    if (isUnix()) {
+        sh """
+            {
+              echo '# CircleGuard Release Notes'
+              echo
+              echo "Generated at: \$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+              echo
+              echo '## Recent Changes'
+              git log --pretty=format:'- %h %s (%an, %ad)' --date=short -n 20
+            } > ${env.RELEASE_NOTES_FILE}
+        """
+    } else {
+        powershell """
+            '# CircleGuard Release Notes' | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8
+            '' | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8 -Append
+            ('Generated at: ' + (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')) | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8 -Append
+            '' | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8 -Append
+            '## Recent Changes' | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8 -Append
+            git log --pretty=format:'- %h %s (%an, %ad)' --date=short -n 20 | Out-File ${env.RELEASE_NOTES_FILE} -Encoding utf8 -Append
+        """
+    }
+}

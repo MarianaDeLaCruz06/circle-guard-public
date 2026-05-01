@@ -1,0 +1,91 @@
+pipeline {
+    agent any
+
+    environment {
+        KUBE_NAMESPACE = 'circleguard-dev'
+        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Gradle') {
+            steps {
+                script {
+                    runGradle('bootJar')
+                }
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                script {
+                    runGradle('test')
+                }
+            }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'services/*/build/test-results/test/*.xml'
+                }
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                script {
+                    buildDockerImages()
+                }
+            }
+        }
+
+        stage('Deploy Kubernetes Dev') {
+            steps {
+                script {
+                    kubectlApply()
+                    runCommand("kubectl rollout status deployment/circleguard-auth-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl rollout status deployment/circleguard-identity-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl rollout status deployment/circleguard-form-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl rollout status deployment/circleguard-promotion-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl rollout status deployment/circleguard-notification-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl rollout status deployment/circleguard-gateway-service -n ${env.KUBE_NAMESPACE} --timeout=180s")
+                    runCommand("kubectl get pods -n ${env.KUBE_NAMESPACE}")
+                    runCommand("kubectl get svc -n ${env.KUBE_NAMESPACE}")
+                }
+            }
+        }
+    }
+}
+
+def serviceList() {
+    return env.SERVICES.split(' ')
+}
+
+def runCommand(String command) {
+    if (isUnix()) {
+        sh command
+    } else {
+        bat command
+    }
+}
+
+def runGradle(String taskName) {
+    def tasks = serviceList().collect { ":services:${it}:${taskName}" }.join(' ')
+    runCommand("${isUnix() ? './gradlew' : 'gradlew.bat'} ${tasks}")
+}
+
+def buildDockerImages() {
+    serviceList().each { service ->
+        runCommand("docker build -f services/${service}/Dockerfile -t ${service}:local .")
+    }
+}
+
+def kubectlApply() {
+    runCommand("kubectl apply -f k8s/namespace.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/config.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/infrastructure.yaml")
+    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/services.yaml")
+}
