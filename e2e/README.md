@@ -3,6 +3,8 @@
 Run the Postman collection against services exposed on localhost:
 
 ```bash
+npm install -g newman
+
 newman run e2e/circleguard-e2e.postman_collection.json
 ```
 
