@@ -134,5 +134,5 @@ def rolloutAll() {
 
 def smokeTest(String service, String port) {
     def pod = "smoke-${service}".take(63).replaceAll('-$', '')
-    runCommand("kubectl run ${pod} -n ${env.KUBE_NAMESPACE} --rm -i --restart=Never --image=curlimages/curl:8.10.1 --command -- curl -sS --max-time 10 -o /dev/null http://${service}:${port}/")
+    runCommand("kubectl run ${pod} -n ${env.KUBE_NAMESPACE} --rm -i --restart=Never --image=curlimages/curl:8.10.1 --command -- curl -sS --max-time 10 -o /dev/null http://${service}.${env.KUBE_NAMESPACE}.svc.cluster.local:${port}/")
 }
