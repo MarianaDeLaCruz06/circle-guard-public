@@ -73,6 +73,7 @@ pipeline {
             steps {
                 script {
                     if (hasKubectl()) {
+                        runCommand("kubectl get svc -n ${env.KUBE_NAMESPACE}")
                         smokeTest('circleguard-auth-service', '8180')
                         smokeTest('circleguard-identity-service', '8083')
                         smokeTest('circleguard-form-service', '8086')
@@ -144,7 +145,7 @@ def rolloutAll() {
 
 def smokeTest(String service, String port) {
     def pod = "smoke-${service}".take(63).replaceAll('-$', '')
-    runCommand("kubectl run ${pod} -n ${env.KUBE_NAMESPACE} --rm -i --restart=Never --image=curlimages/curl:8.10.1 --command -- curl -sS --max-time 10 -o /dev/null http://${service}.${env.KUBE_NAMESPACE}.svc.cluster.local:${port}/")
+    runCommand("kubectl run ${pod} -n ${env.KUBE_NAMESPACE} --rm -i --restart=Never --image=curlimages/curl:8.10.1 --command -- curl -sS --max-time 10 -o /dev/null http://${service}:${port}/")
 }
 
 def generateReleaseNotes() {
