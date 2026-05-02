@@ -59,8 +59,12 @@ pipeline {
         stage('Deploy Kubernetes Master') {
             steps {
                 script {
-                    kubectlApply()
-                    rolloutAll()
+                    if (hasKubectl()) {
+                        kubectlApply()
+                        rolloutAll()
+                    } else {
+                        echo 'kubectl no está instalado en el agente Jenkins; se omite despliegue Kubernetes en esta ejecución local'
+                    }
                 }
             }
         }
@@ -68,12 +72,16 @@ pipeline {
         stage('Smoke Tests') {
             steps {
                 script {
-                    smokeTest('circleguard-auth-service', '8180')
-                    smokeTest('circleguard-identity-service', '8083')
-                    smokeTest('circleguard-form-service', '8086')
-                    smokeTest('circleguard-promotion-service', '8088')
-                    smokeTest('circleguard-notification-service', '8082')
-                    smokeTest('circleguard-gateway-service', '8087')
+                    if (hasKubectl()) {
+                        smokeTest('circleguard-auth-service', '8180')
+                        smokeTest('circleguard-identity-service', '8083')
+                        smokeTest('circleguard-form-service', '8086')
+                        smokeTest('circleguard-promotion-service', '8088')
+                        smokeTest('circleguard-notification-service', '8082')
+                        smokeTest('circleguard-gateway-service', '8087')
+                    } else {
+                        echo 'kubectl no está instalado en el agente Jenkins; se omite despliegue Kubernetes en esta ejecución local'
+                    }
                 }
             }
         }
@@ -110,6 +118,13 @@ def buildDockerImages() {
     serviceList().each { service ->
         runCommand("docker build -f services/${service}/Dockerfile -t ${service}:local .")
     }
+}
+
+def hasKubectl() {
+    if (isUnix()) {
+        return sh(script: 'command -v kubectl >/dev/null 2>&1', returnStatus: true) == 0
+    }
+    return bat(script: 'where kubectl >nul 2>nul', returnStatus: true) == 0
 }
 
 def kubectlApply() {
