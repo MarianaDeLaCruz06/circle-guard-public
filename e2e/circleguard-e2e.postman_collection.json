@@ -23,9 +23,44 @@
       "event": [{ "listen": "test", "script": { "exec": ["pm.test('handoff returns token', function () { pm.response.to.have.status(200); pm.expect(pm.response.json().token).to.exist; });"] } }]
     },
     {
+      "name": "Setup active questionnaire",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{formUrl}}/api/v1/questionnaires",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Cuestionario diario de salud\",\n  \"description\": \"Encuesta base para validación E2E\",\n  \"version\": 1,\n  \"isActive\": true\n}"
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('active questionnaire setup accepted or already present', function () {",
+            "  pm.expect([200, 201, 409]).to.include(pm.response.code);",
+            "});"
+          ]
+        }
+      }]
+    },
+    {
       "name": "Questionnaire active",
       "request": { "method": "GET", "url": "{{formUrl}}/api/v1/questionnaires/active" },
-      "event": [{ "listen": "test", "script": { "exec": ["pm.test('questionnaire endpoint responds', function () { pm.expect([200,404]).to.include(pm.response.code); });"] } }]
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('active questionnaire responds with 200', function () {",
+            "  pm.response.to.have.status(200);",
+            "});",
+            "pm.test('active questionnaire contains title or id', function () {",
+            "  var body = pm.response.json();",
+            "  pm.expect(body.title || body.id).to.exist;",
+            "});"
+          ]
+        }
+      }]
     },
     {
       "name": "Submit survey",
