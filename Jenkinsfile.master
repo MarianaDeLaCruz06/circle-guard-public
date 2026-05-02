@@ -137,8 +137,12 @@ def kubectlApply() {
 
 def rolloutAll() {
     serviceList().each { service ->
-        if (runCommandStatus("kubectl rollout status deployment/${service} -n ${env.KUBE_NAMESPACE} --timeout=180s") != 0) {
-            echo "WARNING: rollout status no completó para ${service}; se continúa para evidencia académica local"
+        def status = sh(
+            returnStatus: true,
+            script: "kubectl rollout status deployment/${service} -n ${env.KUBE_NAMESPACE} --timeout=180s"
+        )
+        if (status != 0) {
+            echo "WARNING: rollout de ${service} no completó en ${env.KUBE_NAMESPACE}. Se continúa para evidencia académica local."
         }
     }
     runCommand("kubectl get pods -n ${env.KUBE_NAMESPACE}")
