@@ -25,7 +25,7 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/circleguard_auth
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_auth
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -86,7 +86,7 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/circleguard_identity
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_identity
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -98,10 +98,7 @@ spec:
                   name: circleguard-secret
                   key: POSTGRES_PASSWORD
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
@@ -147,7 +144,7 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/circleguard_form
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_form
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -159,10 +156,7 @@ spec:
                   name: circleguard-secret
                   key: POSTGRES_PASSWORD
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
 ---
 apiVersion: v1
 kind: Service
@@ -203,7 +197,7 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/circleguard_promotion
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_promotion
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -215,25 +209,13 @@ spec:
                   name: circleguard-secret
                   key: POSTGRES_PASSWORD
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
             - name: SPRING_DATA_REDIS_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: REDIS_HOST
+              value: $(REDIS_SERVICE_HOST)
             - name: SPRING_DATA_REDIS_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: REDIS_PORT
+              value: $(REDIS_SERVICE_PORT_REDIS)
             - name: SPRING_NEO4J_URI
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: NEO4J_URI
+              value: bolt://$(NEO4J_SERVICE_HOST):$(NEO4J_SERVICE_PORT_BOLT)
             - name: SPRING_NEO4J_AUTHENTICATION_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -289,15 +271,9 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
             - name: AUTH_API_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: AUTH_API_URL
+              value: http://$(CIRCLEGUARD_AUTH_SERVICE_SERVICE_HOST):$(CIRCLEGUARD_AUTH_SERVICE_SERVICE_PORT_HTTP)
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
@@ -348,15 +324,9 @@ spec:
                   name: circleguard-config
                   key: SPRING_PROFILES_ACTIVE
             - name: SPRING_DATA_REDIS_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: REDIS_HOST
+              value: $(REDIS_SERVICE_HOST)
             - name: SPRING_DATA_REDIS_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: circleguard-config
-                  key: REDIS_PORT
+              value: $(REDIS_SERVICE_PORT_REDIS)
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:

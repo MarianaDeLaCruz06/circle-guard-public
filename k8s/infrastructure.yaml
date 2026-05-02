@@ -107,6 +107,7 @@ spec:
       labels:
         app: neo4j
     spec:
+      enableServiceLinks: false
       containers:
         - name: neo4j
           image: neo4j:5.26
@@ -118,6 +119,8 @@ spec:
               value: neo4j/password
             - name: NEO4J_PLUGINS
               value: '["apoc"]'
+            - name: NEO4J_server_config_strict__validation_enabled
+              value: "false"
 ---
 apiVersion: v1
 kind: Service
@@ -188,15 +191,23 @@ spec:
       containers:
         - name: kafka
           image: confluentinc/cp-kafka:7.6.0
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              export KAFKA_ZOOKEEPER_CONNECT="${ZOOKEEPER_SERVICE_HOST:-zookeeper}:${ZOOKEEPER_SERVICE_PORT_ZOOKEEPER:-2181}"
+              export KAFKA_ADVERTISED_LISTENERS="PLAINTEXT://${POD_IP}:9092"
+              exec /etc/confluent/docker/run
           ports:
             - containerPort: 9092
           env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
             - name: KAFKA_BROKER_ID
               value: "1"
-            - name: KAFKA_ZOOKEEPER_CONNECT
-              value: zookeeper:2181
-            - name: KAFKA_ADVERTISED_LISTENERS
-              value: PLAINTEXT://kafka:9092
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
               value: PLAINTEXT:PLAINTEXT
             - name: KAFKA_INTER_BROKER_LISTENER_NAME
