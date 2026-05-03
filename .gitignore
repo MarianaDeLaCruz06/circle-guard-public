@@ -51,3 +51,4 @@ neo4jdata/
 
 performance/locust/__pycache__/
 performance/locust/report.html
+release-notes.md
