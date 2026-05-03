@@ -129,10 +129,10 @@ def hasKubectl() {
 }
 
 def kubectlApply() {
-    runCommand("kubectl apply -f k8s/namespace.yaml")
-    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/config.yaml")
-    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/infrastructure.yaml")
-    runCommand("kubectl apply -n ${env.KUBE_NAMESPACE} -f k8s/services.yaml")
+    runCommand("kubectl apply --validate=false -f k8s/namespace.yaml")
+    runCommand("kubectl apply --validate=false -n ${env.KUBE_NAMESPACE} -f k8s/config.yaml")
+    runCommand("kubectl apply --validate=false -n ${env.KUBE_NAMESPACE} -f k8s/infrastructure.yaml")
+    runCommand("kubectl apply --validate=false -n ${env.KUBE_NAMESPACE} -f k8s/services.yaml")
 }
 
 def rolloutAll() {
