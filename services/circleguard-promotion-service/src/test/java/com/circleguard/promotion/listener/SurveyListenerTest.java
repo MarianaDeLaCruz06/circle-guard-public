@@ -42,4 +42,16 @@ class SurveyListenerTest {
 
         verify(healthStatusService, never()).updateStatus(anyString(), anyString());
     }
+
+    @Test
+    void onCertificateValidated_Approved_RestoresUserToActive() {
+        Map<String, Object> event = Map.of(
+            "anonymousId", "tester-123",
+            "status", "APPROVED"
+        );
+
+        surveyListener.onCertificateValidated(event);
+
+        verify(healthStatusService).updateStatus("tester-123", "ACTIVE");
+    }
 }

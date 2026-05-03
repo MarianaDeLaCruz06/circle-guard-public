@@ -1,0 +1,351 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-auth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-auth-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-auth-service
+    spec:
+      containers:
+        - name: auth
+          image: circleguard-auth-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8180
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_auth
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: POSTGRES_PASSWORD
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: JWT_SECRET
+            - name: QR_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: QR_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-auth-service
+spec:
+  selector:
+    app: circleguard-auth-service
+  ports:
+    - name: http
+      port: 8180
+      targetPort: 8180
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-identity-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-identity-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-identity-service
+    spec:
+      containers:
+        - name: identity
+          image: circleguard-identity-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_identity
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: POSTGRES_PASSWORD
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-identity-service
+spec:
+  selector:
+    app: circleguard-identity-service
+  ports:
+    - name: http
+      port: 8083
+      targetPort: 8083
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-form-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-form-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-form-service
+    spec:
+      containers:
+        - name: form
+          image: circleguard-form-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8086
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_form
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: POSTGRES_PASSWORD
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-form-service
+spec:
+  selector:
+    app: circleguard-form-service
+  ports:
+    - name: http
+      port: 8086
+      targetPort: 8086
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-promotion-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-promotion-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-promotion-service
+    spec:
+      containers:
+        - name: promotion
+          image: circleguard-promotion-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8088
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_promotion
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: POSTGRES_PASSWORD
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
+            - name: SPRING_DATA_REDIS_HOST
+              value: $(REDIS_SERVICE_HOST)
+            - name: SPRING_DATA_REDIS_PORT
+              value: $(REDIS_SERVICE_PORT_REDIS)
+            - name: SPRING_NEO4J_URI
+              value: bolt://$(NEO4J_SERVICE_HOST):$(NEO4J_SERVICE_PORT_BOLT)
+            - name: SPRING_NEO4J_AUTHENTICATION_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: NEO4J_USER
+            - name: SPRING_NEO4J_AUTHENTICATION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: NEO4J_PASSWORD
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-promotion-service
+spec:
+  selector:
+    app: circleguard-promotion-service
+  ports:
+    - name: http
+      port: 8088
+      targetPort: 8088
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-notification-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-notification-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-notification-service
+    spec:
+      containers:
+        - name: notification
+          image: circleguard-notification-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: $(KAFKA_SERVICE_HOST):$(KAFKA_SERVICE_PORT_KAFKA)
+            - name: AUTH_API_URL
+              value: http://$(CIRCLEGUARD_AUTH_SERVICE_SERVICE_HOST):$(CIRCLEGUARD_AUTH_SERVICE_SERVICE_PORT_HTTP)
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: JWT_SECRET
+            - name: QR_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: QR_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-notification-service
+spec:
+  selector:
+    app: circleguard-notification-service
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-gateway-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-gateway-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-gateway-service
+    spec:
+      containers:
+        - name: gateway
+          image: circleguard-gateway-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8087
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATA_REDIS_HOST
+              value: $(REDIS_SERVICE_HOST)
+            - name: SPRING_DATA_REDIS_PORT
+              value: $(REDIS_SERVICE_PORT_REDIS)
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: JWT_SECRET
+            - name: QR_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: QR_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-gateway-service
+spec:
+  selector:
+    app: circleguard-gateway-service
+  ports:
+    - name: http
+      port: 8087
+      targetPort: 8087

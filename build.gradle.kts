@@ -43,7 +43,25 @@ subprojects {
         }
     }
 
-    tasks.withType<Test> {
-        useJUnitPlatform()
+    tasks.named<Test>("test") {
+        useJUnitPlatform {
+            excludeTags("integration", "container", "performance")
+        }
+    }
+
+    if (project.path.startsWith(":services:circleguard-")) {
+        tasks.register<Test>("integrationTest") {
+            description = "Runs integration tests tagged with @Tag(\"integration\")."
+            group = "verification"
+
+            val sourceSets = project.extensions.getByType<SourceSetContainer>()
+            testClassesDirs = sourceSets["test"].output.classesDirs
+            classpath = sourceSets["test"].runtimeClasspath
+
+            shouldRunAfter(tasks.named("test"))
+            useJUnitPlatform {
+                includeTags("integration")
+            }
+        }
     }
 }
