@@ -32,3 +32,13 @@ qr:
 
 server:
   port: 8082
+
+circleguard:
+  features:
+    notifications:
+      email:
+        enabled: ${CIRCLEGUARD_FEATURES_EMAIL_ENABLED:true}
+      sms:
+        enabled: ${CIRCLEGUARD_FEATURES_SMS_ENABLED:true}
+      push:
+        enabled: ${CIRCLEGUARD_FEATURES_PUSH_ENABLED:true}

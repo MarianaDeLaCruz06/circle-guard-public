@@ -15,3 +15,36 @@ spring:
 
 server:
   port: 8084
+
+circleguard:
+  promotion-service:
+    url: ${PROMOTION_SERVICE_URL:http://localhost:8088}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      promotionService:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      promotionService:
+        maxAttempts: 3
+        waitDuration: 500ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, circuitbreakers, retries
+  health:
+    circuitbreakers:
+      enabled: true
