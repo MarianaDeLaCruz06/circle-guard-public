@@ -1,0 +1,21 @@
+# Provider binaries and init cache
+**/.terraform/providers/
+**/.terraform/terraform.tfstate
+
+# Local tfstate (bootstrap uses local backend — do NOT commit state with secrets)
+global/backend-bootstrap/terraform.tfstate
+global/backend-bootstrap/terraform.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI config
+.terraformrc
+terraform.rc

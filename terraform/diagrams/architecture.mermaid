@@ -1,0 +1,73 @@
+graph TB
+    subgraph "Developer Machine"
+        DEV[Terraform CLI]
+        KCFG[kubeconfig<br/>docker-desktop]
+    end
+
+    subgraph "Kubernetes Cluster"
+        subgraph "terraform-backend (ns)"
+            MINIO[(MinIO<br/>S3-compatible)]
+            BUCKET[Bucket:<br/>terraform-state]
+            MINIO --- BUCKET
+        end
+
+        subgraph "circleguard-dev / stage / master (ns)"
+            CM[ConfigMap<br/>circleguard-config]
+            SEC[Secret<br/>circleguard-secret]
+
+            subgraph "Stateful Infra"
+                PG[(PostgreSQL 16)]
+                NEO[(Neo4j 5.26)]
+                ZK[Zookeeper]
+                KAFKA[Kafka 7.6]
+                REDIS[(Redis 7.2)]
+                ZK --> KAFKA
+            end
+
+            subgraph "Microservicios CircleGuard"
+                AUTH[auth-service<br/>:8180]
+                IDENT[identity-service<br/>:8083]
+                FORM[form-service<br/>:8086]
+                PROM[promotion-service<br/>:8088]
+                NOTI[notification-service<br/>:8082]
+                GATE[gateway-service<br/>:8087]
+            end
+
+            AUTH --> PG
+            IDENT --> PG
+            IDENT --> KAFKA
+            FORM --> PG
+            FORM --> KAFKA
+            PROM --> PG
+            PROM --> NEO
+            PROM --> KAFKA
+            PROM --> REDIS
+            NOTI --> KAFKA
+            NOTI --> AUTH
+            GATE --> REDIS
+
+            CM -.envFrom.-> AUTH
+            CM -.envFrom.-> IDENT
+            CM -.envFrom.-> FORM
+            CM -.envFrom.-> PROM
+            CM -.envFrom.-> NOTI
+            CM -.envFrom.-> GATE
+            SEC -.envFrom.-> AUTH
+            SEC -.envFrom.-> IDENT
+            SEC -.envFrom.-> FORM
+            SEC -.envFrom.-> PROM
+            SEC -.envFrom.-> NOTI
+            SEC -.envFrom.-> GATE
+        end
+    end
+
+    DEV -->|terraform apply| KCFG
+    KCFG -->|kubectl API| MINIO
+    DEV -.->|tfstate write/read<br/>S3 protocol| MINIO
+
+    style MINIO fill:#f9d71c
+    style BUCKET fill:#f9d71c
+    style PG fill:#336791,color:#fff
+    style NEO fill:#018bff,color:#fff
+    style KAFKA fill:#231f20,color:#fff
+    style REDIS fill:#dc382d,color:#fff
