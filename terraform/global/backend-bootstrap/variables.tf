@@ -7,7 +7,7 @@ variable "kubeconfig_path" {
 variable "kubeconfig_context" {
   description = "Kubeconfig context (e.g. docker-desktop, minikube, gke_...)"
   type        = string
-  default     = "gke_project-e17fa96d-a2f8-4371-ad2_us-central1_microservices-cluster"
+  default     = "docker-desktop"
 }
 
 variable "namespace" {
@@ -37,9 +37,9 @@ variable "bucket_name" {
 }
 
 variable "service_type" {
-  description = "Kubernetes service type for MinIO: NodePort (local) or LoadBalancer (GKE/cloud)"
+  description = "Kubernetes service type for MinIO: NodePort (local) or LoadBalancer (cloud K8s such as GKE/EKS)"
   type        = string
-  default     = "LoadBalancer"
+  default     = "NodePort"
 }
 
 variable "api_node_port" {

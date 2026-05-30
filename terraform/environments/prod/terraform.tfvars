@@ -1,4 +1,4 @@
 namespace          = "circleguard-master"
-kubeconfig_context = "gke_project-e17fa96d-a2f8-4371-ad2_us-central1_microservices-cluster"
+kubeconfig_context = "docker-desktop"
 image_tag          = "local"
 replicas           = 3

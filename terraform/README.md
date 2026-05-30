@@ -134,6 +134,47 @@ cd terraform/global/backend-bootstrap
 terraform destroy
 ```
 
+## Despliegue alternativo en GKE (opcional, NO requerido para evaluar)
+
+El default es **local** para que cualquier miembro del equipo pueda clonar
+el repo y correr `terraform apply` sin depender de una cuenta GCP ajena.
+
+Si quieres probarlo en un cluster GKE propio:
+
+1. Crea tu cluster y obten el contexto:
+   ```bash
+   gcloud container clusters get-credentials <tu-cluster> --region <region>
+   kubectl config current-context   # copia el resultado
+   ```
+
+2. Bootstrap MinIO con LoadBalancer (GKE no soporta NodePort externo):
+   ```bash
+   cd terraform/global/backend-bootstrap
+   terraform apply \
+     -var service_type=LoadBalancer \
+     -var kubeconfig_context=<tu-contexto>
+   ```
+
+3. Obten la IP publica del LoadBalancer:
+   ```bash
+   kubectl get svc minio -n terraform-backend \
+     -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+   ```
+
+4. En `environments/<env>/versions.tf` reemplaza `endpoints.s3` de
+   `http://localhost:30900` a `http://<IP-publica>:9000`.
+
+5. Copia el ejemplo y ajusta a tu contexto:
+   ```bash
+   cd terraform/environments/dev
+   cp terraform.tfvars.gcp.example terraform.tfvars
+   # edita terraform.tfvars con tu kubeconfig_context real
+   terraform init -reconfigure
+   terraform apply
+   ```
+
+> Recuerda no commitear esos cambios — cada quien tiene su propio cluster.
+
 ## Mapeo con los YAML originales (`k8s/`)
 
 | YAML original | Modulo Terraform equivalente |

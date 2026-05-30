@@ -13,7 +13,7 @@ terraform {
     key    = "prod/terraform.tfstate"
     region = "us-east-1"
     endpoints = {
-      s3 = "http://34.60.130.85:9000"
+      s3 = "http://localhost:30900"
     }
     skip_credentials_validation = true
     skip_metadata_api_check     = true

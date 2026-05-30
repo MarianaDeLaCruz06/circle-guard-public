@@ -116,12 +116,13 @@ resource "kubernetes_service" "minio" {
       name        = "api"
       port        = 9000
       target_port = 9000
-      # node_port is set automatically when service_type = NodePort
+      node_port   = var.service_type == "NodePort" ? var.api_node_port : null
     }
     port {
       name        = "console"
       port        = 9001
       target_port = 9001
+      node_port   = var.service_type == "NodePort" ? var.console_node_port : null
     }
   }
 }

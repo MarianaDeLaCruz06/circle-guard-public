@@ -1,0 +1,22 @@
+# Ejemplo opcional: despliegue en un cluster GKE (Google Kubernetes Engine).
+#
+# Uso:
+#   1) Crea tu propio cluster GKE y obtén tu contexto de kubeconfig:
+#        gcloud container clusters get-credentials <tu-cluster> --region <region>
+#        kubectl config current-context
+#   2) Sustituye el valor de kubeconfig_context por tu contexto real.
+#   3) Bootstrap del backend MinIO con service_type=LoadBalancer:
+#        cd terraform/global/backend-bootstrap
+#        terraform apply -var service_type=LoadBalancer -var kubeconfig_context=<tu-contexto>
+#   4) Obtén la IP externa del LoadBalancer:
+#        kubectl get svc minio -n terraform-backend -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+#   5) En este archivo (o en versions.tf) actualiza endpoints.s3 a esa IP.
+#   6) cp terraform.tfvars.gcp.example terraform.tfvars && terraform init -reconfigure && terraform apply
+#
+# IMPORTANTE: NO commitear este archivo con tu contexto real ni con la IP de tu
+# LoadBalancer — cada desarrollador tiene su propio cluster.
+
+namespace          = "circleguard-dev"
+kubeconfig_context = "gke_<tu-proyecto>_<region>_<tu-cluster>"
+image_tag          = "local"
+replicas           = 1
