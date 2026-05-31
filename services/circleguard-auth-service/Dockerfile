@@ -1,15 +1,11 @@
-# Build from the repository root:
-# docker build -f services/circleguard-auth-service/Dockerfile -t circleguard-auth-service:local .
-FROM eclipse-temurin:21-jdk-alpine AS build
-
-WORKDIR /workspace
-
-COPY gradlew gradlew.bat settings.gradle.kts build.gradle.kts ./
-COPY gradle ./gradle
-COPY services ./services
-
-RUN sed -i 's/\r$//' gradlew && chmod +x gradlew && ./gradlew :services:circleguard-auth-service:bootJar --no-daemon
-
+# Build from the repository root AFTER the JAR has been produced by Gradle:
+#   ./gradlew :services:circleguard-auth-service:bootJar
+#   docker build -f services/circleguard-auth-service/Dockerfile -t circleguard-auth-service:local .
+#
+# The Jenkins pipeline runs the Gradle build in a previous stage; this
+# Dockerfile only packages the pre-built JAR. This avoids recompiling the
+# whole project per image and avoids needing Maven Central access during
+# `docker build`.
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
@@ -18,7 +14,7 @@ RUN addgroup -S spring && adduser -S spring -G spring
 
 ENV SPRING_PROFILES_ACTIVE=docker
 
-COPY --from=build /workspace/services/circleguard-auth-service/build/libs/*.jar app.jar
+COPY services/circleguard-auth-service/build/libs/*.jar app.jar
 
 EXPOSE 8180
 
