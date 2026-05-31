@@ -132,7 +132,23 @@ def runSonarAnalysis(String version) {
 // Kubernetes
 // ---------------------------------------------------------------------------
 def hasKubectl() {
-    return hasTool('kubectl')
+    // Step 1: binary in PATH
+    if (!hasTool('kubectl')) return false
+    // Step 2: a kubeconfig with an active context exists. Without this,
+    // kubectl falls back to localhost:8080 (which on a Jenkins agent
+    // happens to be Jenkins itself, so requests return an HTML login page
+    // and kubectl crashes with a confusing parsing error).
+    def status
+    if (isUnix()) {
+        status = sh(script: 'kubectl config current-context >/dev/null 2>&1', returnStatus: true)
+    } else {
+        status = bat(script: '@kubectl config current-context >nul 2>nul', returnStatus: true)
+    }
+    if (status != 0) {
+        echo 'kubectl esta instalado pero no hay un kubeconfig con contexto activo; se omitira el deploy a Kubernetes.'
+        return false
+    }
+    return true
 }
 
 def hasTool(String name) {
