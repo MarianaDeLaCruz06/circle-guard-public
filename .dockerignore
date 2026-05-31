@@ -1,10 +1,17 @@
 .git
 .gradle
-build
-**/build
+**/.gradle
 **/bin
 mobile/node_modules
 mobile/.expo
 scratch
 *.log
 *.tmp
+
+# Exclude all build/ directories...
+**/build
+
+# ...except the bootJar output, which the Dockerfiles need to copy.
+!services/*/build
+!services/*/build/libs
+!services/*/build/libs/*.jar
