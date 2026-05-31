@@ -156,3 +156,38 @@ We maintain high system integrity via multi-level testing:
 - **FERPA Compliance**: Student identities are never stored in the contact graph.
 - **Right to be Forgotten**: Users can trigger complete data purging via the Identity Vault.
 - **Temporal Privacy**: All contact edges are automatically purged after 14 days.
+
+---
+
+## 🎓 Proyecto Final IngeSoft V
+
+Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de Ingeniería de Software V** y enlaza a los documentos y artefactos de cada uno.
+
+| # | Requisito | Peso | Estado | Documentación |
+|:---:|:---|:---:|:---:|:---|
+| 1 | Metodología Ágil y Branching | 10% | ⚠️ parcial | GitFlow con feature branches; falta tablero formal de sprints |
+| 2 | Infraestructura como Código (Terraform) | 20% | ✅ | [`terraform/README.md`](terraform/README.md) · [diagrama](terraform/diagrams/architecture.mermaid) |
+| 3 | Patrones de Diseño | 10% | ✅ | [`docs/PATRONES_DE_DISENO.md`](docs/PATRONES_DE_DISENO.md) |
+| 4 | CI/CD Avanzado | 15% | ✅ | [`docs/CICD_AVANZADO.md`](docs/CICD_AVANZADO.md) · [`Jenkinsfile.dev`](Jenkinsfile.dev) · [`Jenkinsfile.stage`](Jenkinsfile.stage) · [`Jenkinsfile.master`](Jenkinsfile.master) · [`jenkins/shared.groovy`](jenkins/shared.groovy) |
+| 5 | Pruebas Completas | 15% | ⚠️ parcial | Unit + integration + E2E Postman + Locust; falta OWASP ZAP y reportes de cobertura |
+| 6 | Change Management & Release Notes | 5% | ⚠️ parcial | Release Notes automáticas en `Jenkinsfile.master`; falta proceso formal de rollback |
+| 7 | Observabilidad | 10% | ❌ | Pendiente: Prometheus + Grafana, ELK, Jaeger |
+| 8 | Seguridad | 5% | ❌ | Pendiente: TLS, secrets management, OWASP ZAP |
+| 9 | Documentación | 10% | ⚠️ parcial | Este README + docs por requisito; pendiente guías de operación formales |
+
+### Resumen de los requisitos completos
+
+**Req. 2 — Terraform (20%)** — Estructura modular en [`terraform/`](terraform/) con 7 módulos reutilizables, 3 ambientes (dev/stage/prod) y backend remoto S3-compatible vía MinIO en Kubernetes. Defaults locales (Docker Desktop) para reproducibilidad sin cloud; flujo GKE documentado como opcional.
+
+**Req. 3 — Patrones de Diseño (10%)** — Catálogo de 8 patrones preexistentes (Repository, Chain of Responsibility, Strategy+Dispatcher, Observer/Event-Driven, DTO, Filter Chain, Converter, API Gateway) con referencias archivo:línea, más 3 patrones nuevos implementados con Resilience4j 2.2.0:
+- **Circuit Breaker** en `IdentityClient` (auth→identity) y `PromotionClient` (dashboard→promotion) con fallbacks degradados.
+- **Retry con backoff exponencial** componiendo con el Circuit Breaker.
+- **Feature Toggle** vía `@ConfigurationProperties` para canales de notificación (email/sms/push), cambiable sin redeploy.
+
+**Req. 4 — CI/CD Avanzado (15%)** — 3 pipelines Jenkins (dev/stage/master) con:
+- **SonarQube** análisis estático multi-módulo.
+- **Trivy** escaneo de contenedores (advisory en dev/stage, **gate HIGH/CRITICAL en master**).
+- **Versionado semántico automático** por canal (`0.0.0-dev.<sha>`, `<tag>-rc.<n>`, `X.Y.Z+1`).
+- **Notificaciones de fallo** vía email con fallback.
+- **Aprobación manual a producción** con timeout 60 min y submitters restringidos.
+- **Cleanup automático** (`buildDiscarder`, `cleanupDockerImages`, `cleanupWorkspace`) para mantener el agente bajo control de disco.
