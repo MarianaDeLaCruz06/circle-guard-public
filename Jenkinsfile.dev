@@ -1,6 +1,15 @@
 pipeline {
     agent any
 
+    options {
+        // Retencion: solo conservar los ultimos 5 builds y sus artifacts.
+        // Sin esto, cada build acumula ~1.5 GB en el agente.
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+        timeout(time: 60, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        timestamps()
+    }
+
     environment {
         KUBE_NAMESPACE = 'circleguard-dev'
         SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
@@ -100,6 +109,15 @@ pipeline {
         }
         always {
             archiveArtifacts artifacts: 'services/*/build/reports/**/*', allowEmptyArchive: true, fingerprint: false
+            script {
+                try {
+                    def libRef = load 'jenkins/shared.groovy'
+                    if (env.IMAGE_TAG) { libRef.cleanupDockerImages(env.IMAGE_TAG) }
+                    libRef.cleanupWorkspace()
+                } catch (Exception e) {
+                    echo "Cleanup parcial: ${e.message}"
+                }
+            }
         }
     }
 }

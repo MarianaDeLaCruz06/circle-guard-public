@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+        timeout(time: 90, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        timestamps()
+    }
+
     environment {
         KUBE_NAMESPACE = 'circleguard-stage'
         SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
@@ -107,6 +114,15 @@ pipeline {
         }
         always {
             archiveArtifacts artifacts: 'services/*/build/reports/**/*', allowEmptyArchive: true, fingerprint: false
+            script {
+                try {
+                    def libRef = load 'jenkins/shared.groovy'
+                    if (env.IMAGE_TAG) { libRef.cleanupDockerImages(env.IMAGE_TAG) }
+                    libRef.cleanupWorkspace()
+                } catch (Exception e) {
+                    echo "Cleanup parcial: ${e.message}"
+                }
+            }
         }
     }
 }

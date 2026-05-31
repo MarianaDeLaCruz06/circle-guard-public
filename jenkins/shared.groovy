@@ -283,6 +283,64 @@ def tagGitRelease(String version) {
 }
 
 // ---------------------------------------------------------------------------
+// Docker disk cleanup
+// ---------------------------------------------------------------------------
+// Frees disk after build/scan stages so accumulated layers, build cache and
+// dangling containers do not fill the host disk over many builds.
+// Always tolerant: never fails the pipeline because of a cleanup hiccup.
+def dockerCleanup() {
+    if (!hasTool('docker')) {
+        echo 'docker no esta disponible para limpieza; se omite.'
+        return
+    }
+    // Container prune: drops stopped containers (smoke tests, etc.)
+    runCommandStatus('docker container prune -f')
+    // Image prune: drops dangling (untagged) images
+    runCommandStatus('docker image prune -f')
+    // Untagged + unused images older than 24h
+    runCommandStatus('docker image prune -af --filter "until=24h"')
+    // Build cache prune: BuildKit cache that piles up per build
+    runCommandStatus('docker builder prune -af --filter "until=24h"')
+    // Show what's left so the build log shows current docker disk footprint
+    runCommandStatus('docker system df')
+}
+
+// ---------------------------------------------------------------------------
+// Cleanup — runs in post.always to keep the agent's disk under control.
+// ---------------------------------------------------------------------------
+// Deletes the images this build produced (no longer needed once they were
+// pushed to a registry / deployed) plus dangling layers from intermediate
+// builds. Keeps the registry-managed retention separate from the local agent.
+def cleanupDockerImages(String tag) {
+    serviceList().each { service ->
+        def image = "${service}:${tag}"
+        runCommandStatus("docker rmi -f ${image}")
+    }
+    // Drop dangling/intermediate layers older than 24h
+    runCommandStatus("docker image prune -af --filter \"until=24h\"")
+    runCommandStatus("docker builder prune -af --filter \"until=24h\"")
+}
+
+// Wipes the workspace so the next build starts fresh. Without this, the
+// services/*/build directories from Gradle (each ~500 MB) accumulate per job.
+def cleanupWorkspace() {
+    try {
+        cleanWs(
+            cleanWhenAborted: true,
+            cleanWhenFailure: true,
+            cleanWhenNotBuilt: true,
+            cleanWhenSuccess: true,
+            cleanWhenUnstable: true,
+            deleteDirs: true
+        )
+    } catch (Exception e) {
+        // cleanWs plugin not installed — fall back to manual delete
+        echo "cleanWs no disponible (${e.message}); usando deleteDir() como fallback."
+        deleteDir()
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Failure notification
 // ---------------------------------------------------------------------------
 // Sends an email to NOTIFICATION_RECIPIENTS (env var or default).
