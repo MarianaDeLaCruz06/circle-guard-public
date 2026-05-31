@@ -18,8 +18,10 @@ public class PromotionClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    // Initialized with the same default so the client works when instantiated
+    // outside the Spring context (e.g. unit/integration contract tests).
     @Value("${circleguard.promotion-service.url:http://localhost:8088}")
-    private String promotionServiceUrl;
+    private String promotionServiceUrl = "http://localhost:8088";
 
     @CircuitBreaker(name = INSTANCE, fallbackMethod = "getHealthStatsFallback")
     @Retry(name = INSTANCE)

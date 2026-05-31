@@ -18,8 +18,11 @@ public class IdentityClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    // Initialized with the same default so the client works when instantiated
+    // outside the Spring context (e.g. unit/integration contract tests that
+    // do `new IdentityClient()` without booting the application).
     @Value("${circleguard.identity-service.url:http://localhost:8083}")
-    private String identityServiceUrl;
+    private String identityServiceUrl = "http://localhost:8083";
 
     @CircuitBreaker(name = INSTANCE, fallbackMethod = "getAnonymousIdFallback")
     @Retry(name = INSTANCE)
