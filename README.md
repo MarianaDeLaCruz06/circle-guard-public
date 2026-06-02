@@ -165,7 +165,7 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 
 | # | Requisito | Peso | Estado | Documentación |
 |:---:|:---|:---:|:---:|:---|
-| 1 | Metodología Ágil y Branching | 10% | ⚠️ parcial | GitFlow con feature branches; falta tablero formal de sprints |
+| 1 | Metodología Ágil y Branching | 10% | ✅ | [`docs/METODOLOGIA_AGIL.md`](docs/METODOLOGIA_AGIL.md) |
 | 2 | Infraestructura como Código (Terraform) | 20% | ✅ | [`terraform/README.md`](terraform/README.md) · [diagrama](terraform/diagrams/architecture.mermaid) |
 | 3 | Patrones de Diseño | 10% | ✅ | [`docs/PATRONES_DE_DISENO.md`](docs/PATRONES_DE_DISENO.md) |
 | 4 | CI/CD Avanzado | 15% | ✅ | [`docs/CICD_AVANZADO.md`](docs/CICD_AVANZADO.md) · [`Jenkinsfile.dev`](Jenkinsfile.dev) · [`Jenkinsfile.stage`](Jenkinsfile.stage) · [`Jenkinsfile.master`](Jenkinsfile.master) · [`jenkins/shared.groovy`](jenkins/shared.groovy) |
