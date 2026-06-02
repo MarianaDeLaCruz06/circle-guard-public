@@ -49,6 +49,17 @@ pipeline {
             post {
                 always {
                     junit allowEmptyResults: true, testResults: 'services/*/build/test-results/test/*.xml'
+                    // Publish JaCoCo coverage reports for production build evidence
+                    publishHTML(target: [
+                        allowMissing          : true,
+                        alwaysLinkToLastBuild : false,
+                        keepAll               : true,
+                        reportDir             : 'services/circleguard-auth-service/build/reports/jacoco/test/html',
+                        reportFiles           : 'index.html',
+                        reportName            : 'Coverage Report (auth-service)',
+                        reportTitles          : 'JaCoCo Coverage'
+                    ])
+                    archiveArtifacts artifacts: 'services/*/build/reports/jacoco/**/*.xml', allowEmptyArchive: true
                 }
             }
         }
@@ -80,6 +91,29 @@ pipeline {
             steps {
                 // Production gate: HIGH/CRITICAL findings fail the build.
                 script { lib.runTrivyScan(env.IMAGE_TAG, true) }
+            }
+        }
+
+        stage('OWASP ZAP Security Gate') {
+            steps {
+                script {
+                    if (lib.hasTool('docker')) {
+                        def reportDir = "${env.WORKSPACE}/security/reports"
+                        lib.runCommandStatus("mkdir -p ${reportDir}")
+                        // Gate scan: any HIGH risk alert fails the build before production approval
+                        def status = lib.runCommandStatus(
+                            "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://circleguard-gateway-service:8087 -r zap_report.html"
+                        )
+                        archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
+                        if (status != 0) {
+                            unstable('OWASP ZAP encontro alertas de seguridad. Revisa el reporte antes de aprobar el despliegue a produccion.')
+                        } else {
+                            echo 'OWASP ZAP: Sin alertas de alta severidad. Listo para aprobacion de produccion.'
+                        }
+                    } else {
+                        echo 'WARNING: Docker no disponible en el agente; se omite ZAP Gate. Ejecuta security/zap-scan.sh antes del despliegue a produccion.'
+                    }
+                }
             }
         }
 

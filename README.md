@@ -169,7 +169,7 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 | 2 | Infraestructura como Código (Terraform) | 20% | ✅ | [`terraform/README.md`](terraform/README.md) · [diagrama](terraform/diagrams/architecture.mermaid) |
 | 3 | Patrones de Diseño | 10% | ✅ | [`docs/PATRONES_DE_DISENO.md`](docs/PATRONES_DE_DISENO.md) |
 | 4 | CI/CD Avanzado | 15% | ✅ | [`docs/CICD_AVANZADO.md`](docs/CICD_AVANZADO.md) · [`Jenkinsfile.dev`](Jenkinsfile.dev) · [`Jenkinsfile.stage`](Jenkinsfile.stage) · [`Jenkinsfile.master`](Jenkinsfile.master) · [`jenkins/shared.groovy`](jenkins/shared.groovy) |
-| 5 | Pruebas Completas | 15% | ⚠️ parcial | Unit + integration + E2E Postman + Locust; falta OWASP ZAP y reportes de cobertura |
+| 5 | Pruebas Completas | 15% | ✅ | [`docs/PRUEBAS_COMPLETAS.md`](docs/PRUEBAS_COMPLETAS.md) · JaCoCo [`build.gradle.kts`](build.gradle.kts) · OWASP ZAP [`security/README.md`](security/README.md) · E2E [`e2e/`](e2e/) · Locust [`performance/locust/`](performance/locust/) |
 | 6 | Change Management & Release Notes | 5% | ⚠️ parcial | Release Notes automáticas en `Jenkinsfile.master`; falta proceso formal de rollback |
 | 7 | Observabilidad | 10% | ❌ | Pendiente: Prometheus + Grafana, ELK, Jaeger |
 | 8 | Seguridad | 5% | ❌ | Pendiente: TLS, secrets management, OWASP ZAP |

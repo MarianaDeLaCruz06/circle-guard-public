@@ -39,6 +39,17 @@ pipeline {
             post {
                 always {
                     junit allowEmptyResults: true, testResults: 'services/*/build/test-results/test/*.xml'
+                    // Publish JaCoCo coverage reports
+                    publishHTML(target: [
+                        allowMissing          : true,
+                        alwaysLinkToLastBuild : false,
+                        keepAll               : true,
+                        reportDir             : 'services/circleguard-auth-service/build/reports/jacoco/test/html',
+                        reportFiles           : 'index.html',
+                        reportName            : 'Coverage Report (auth-service)',
+                        reportTitles          : 'JaCoCo Coverage'
+                    ])
+                    archiveArtifacts artifacts: 'services/*/build/reports/jacoco/**/*.xml', allowEmptyArchive: true
                 }
             }
         }
@@ -70,6 +81,26 @@ pipeline {
             steps {
                 // Advisory only in stage (does not fail the build, but logs HIGH/CRITICAL)
                 script { lib.runTrivyScan(env.IMAGE_TAG, false) }
+            }
+        }
+
+        stage('OWASP ZAP Security Scan') {
+            steps {
+                script {
+                    if (lib.hasTool('docker')) {
+                        def reportDir = "${env.WORKSPACE}/security/reports"
+                        lib.runCommandStatus("mkdir -p ${reportDir}")
+                        def status = lib.runCommandStatus(
+                            "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://circleguard-gateway-service:8087 -r zap_report.html"
+                        )
+                        if (status != 0) {
+                            echo 'WARNING: OWASP ZAP encontro alertas de seguridad (advisory en stage). Revisa security/reports/zap_report.html.'
+                        }
+                        archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
+                    } else {
+                        echo 'Docker no esta disponible; se omite el escaneo OWASP ZAP. Ejecuta security/zap-scan.sh manualmente.'
+                    }
+                }
             }
         }
 
