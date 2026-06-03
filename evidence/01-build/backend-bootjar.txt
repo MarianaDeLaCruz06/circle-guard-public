@@ -1,0 +1,67 @@
+> Task :services:circleguard-auth-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-auth-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-auth-service:compileJava UP-TO-DATE
+> Task :services:circleguard-auth-service:processResources UP-TO-DATE
+> Task :services:circleguard-auth-service:classes UP-TO-DATE
+> Task :services:circleguard-auth-service:resolveMainClassName UP-TO-DATE
+> Task :services:circleguard-auth-service:bootJar
+> Task :services:circleguard-dashboard-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-dashboard-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-dashboard-service:compileJava UP-TO-DATE
+> Task :services:circleguard-dashboard-service:processResources UP-TO-DATE
+> Task :services:circleguard-dashboard-service:classes UP-TO-DATE
+> Task :services:circleguard-dashboard-service:resolveMainClassName
+> Task :services:circleguard-dashboard-service:bootJar
+> Task :services:circleguard-file-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-file-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-file-service:compileJava UP-TO-DATE
+> Task :services:circleguard-file-service:processResources UP-TO-DATE
+> Task :services:circleguard-file-service:classes UP-TO-DATE
+> Task :services:circleguard-file-service:resolveMainClassName
+> Task :services:circleguard-file-service:bootJar
+> Task :services:circleguard-form-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-form-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-form-service:compileJava UP-TO-DATE
+> Task :services:circleguard-form-service:processResources UP-TO-DATE
+> Task :services:circleguard-form-service:classes UP-TO-DATE
+> Task :services:circleguard-form-service:resolveMainClassName
+> Task :services:circleguard-form-service:bootJar
+> Task :services:circleguard-gateway-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-gateway-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-gateway-service:compileJava UP-TO-DATE
+> Task :services:circleguard-gateway-service:processResources UP-TO-DATE
+> Task :services:circleguard-gateway-service:classes UP-TO-DATE
+> Task :services:circleguard-gateway-service:resolveMainClassName
+> Task :services:circleguard-gateway-service:bootJar
+> Task :services:circleguard-identity-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-identity-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-identity-service:compileJava UP-TO-DATE
+> Task :services:circleguard-identity-service:processResources UP-TO-DATE
+> Task :services:circleguard-identity-service:classes UP-TO-DATE
+> Task :services:circleguard-identity-service:resolveMainClassName
+> Task :services:circleguard-identity-service:bootJar
+> Task :services:circleguard-notification-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-notification-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-notification-service:compileJava UP-TO-DATE
+> Task :services:circleguard-notification-service:processResources UP-TO-DATE
+> Task :services:circleguard-notification-service:classes UP-TO-DATE
+> Task :services:circleguard-notification-service:resolveMainClassName
+> Task :services:circleguard-notification-service:bootJar
+> Task :services:circleguard-promotion-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-promotion-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-promotion-service:compileJava UP-TO-DATE
+> Task :services:circleguard-promotion-service:processResources UP-TO-DATE
+> Task :services:circleguard-promotion-service:classes UP-TO-DATE
+> Task :services:circleguard-promotion-service:resolveMainClassName
+> Task :services:circleguard-promotion-service:bootJar
+
+[Incubating] Problems report is available at: file:///C:/Users/maria/OneDrive/Desktop/Octavo%20Semestre/Ingesoft5/circle-guard-public/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 16s
+40 actionable tasks: 23 executed, 17 up-to-date
