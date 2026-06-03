@@ -10,7 +10,7 @@ pipeline {
 
     environment {
         KUBE_NAMESPACE = 'circleguard-stage'
-        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
+        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service circleguard-dashboard-service circleguard-file-service'
         BUILD_CHANNEL = 'stage'
     }
 

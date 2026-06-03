@@ -349,3 +349,95 @@ spec:
     - name: http
       port: 8087
       targetPort: 8087
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-dashboard-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-dashboard-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-dashboard-service
+    spec:
+      containers:
+        - name: dashboard
+          image: circleguard-dashboard-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8084
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://$(POSTGRES_SERVICE_HOST):$(POSTGRES_SERVICE_PORT_POSTGRES)/circleguard_dashboard
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: POSTGRES_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: circleguard-secret
+                  key: POSTGRES_PASSWORD
+            - name: PROMOTION_SERVICE_URL
+              value: http://$(CIRCLEGUARD_PROMOTION_SERVICE_SERVICE_HOST):$(CIRCLEGUARD_PROMOTION_SERVICE_SERVICE_PORT_HTTP)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-dashboard-service
+spec:
+  selector:
+    app: circleguard-dashboard-service
+  ports:
+    - name: http
+      port: 8084
+      targetPort: 8084
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleguard-file-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleguard-file-service
+  template:
+    metadata:
+      labels:
+        app: circleguard-file-service
+    spec:
+      containers:
+        - name: file
+          image: circleguard-file-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: circleguard-config
+                  key: SPRING_PROFILES_ACTIVE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: circleguard-file-service
+spec:
+  selector:
+    app: circleguard-file-service
+  ports:
+    - name: http
+      port: 8085
+      targetPort: 8085

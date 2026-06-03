@@ -57,7 +57,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, info, circuitbreakers, retries
+        include: health, info, prometheus, circuitbreakers, retries
   health:
     circuitbreakers:
       enabled: true

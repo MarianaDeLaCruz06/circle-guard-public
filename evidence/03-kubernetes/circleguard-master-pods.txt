@@ -1,0 +1,12 @@
+NAME                                                READY   STATUS             RESTARTS        AGE
+circleguard-auth-service-57cdcd58dc-bgz45           0/1     ImagePullBackOff   0               29d
+circleguard-form-service-69c6697dbf-rrzjr           0/1     ImagePullBackOff   0               29d
+circleguard-gateway-service-86c74fbb69-s56dm        0/1     ImagePullBackOff   0               29d
+circleguard-identity-service-597dd558f7-xnxk5       0/1     ImagePullBackOff   0               29d
+circleguard-notification-service-75b7c66d7b-pqll7   0/1     ImagePullBackOff   0               29d
+circleguard-promotion-service-76cb5bc4bf-chmgx      0/1     ImagePullBackOff   1 (29d ago)     29d
+kafka-7fcc7bf6f4-j5qb8                              0/1     CrashLoopBackOff   22 (3m6s ago)   29d
+neo4j-54cb95bccb-xssth                              1/1     Running            0               29d
+postgres-678dc4f87f-74c78                           1/1     Running            0               29d
+redis-84579f5fc6-nbfjw                              1/1     Running            0               29d
+zookeeper-647dd87444-hlqlh                          1/1     Running            0               29d

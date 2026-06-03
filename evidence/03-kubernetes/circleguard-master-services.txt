@@ -1,0 +1,12 @@
+NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+circleguard-auth-service           ClusterIP   10.100.96.20    <none>        8180/TCP            29d
+circleguard-form-service           ClusterIP   10.111.60.137   <none>        8086/TCP            29d
+circleguard-gateway-service        ClusterIP   10.109.123.96   <none>        8087/TCP            29d
+circleguard-identity-service       ClusterIP   10.105.173.21   <none>        8083/TCP            29d
+circleguard-notification-service   ClusterIP   10.106.79.140   <none>        8082/TCP            29d
+circleguard-promotion-service      ClusterIP   10.96.195.53    <none>        8088/TCP            29d
+kafka                              ClusterIP   10.101.28.183   <none>        9092/TCP            29d
+neo4j                              ClusterIP   10.103.78.22    <none>        7474/TCP,7687/TCP   29d
+postgres                           ClusterIP   10.101.94.149   <none>        5432/TCP            29d
+redis                              ClusterIP   10.96.172.233   <none>        6379/TCP            29d
+zookeeper                          ClusterIP   10.107.46.200   <none>        2181/TCP            29d

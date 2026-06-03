@@ -42,3 +42,12 @@ circleguard:
         enabled: ${CIRCLEGUARD_FEATURES_SMS_ENABLED:true}
       push:
         enabled: ${CIRCLEGUARD_FEATURES_PUSH_ENABLED:true}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+  health:
+    mail:
+      enabled: false

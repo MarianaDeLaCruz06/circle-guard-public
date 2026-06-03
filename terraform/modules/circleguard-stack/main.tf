@@ -199,3 +199,45 @@ module "gateway_service" {
 
   depends_on = [module.redis]
 }
+
+module "dashboard_service" {
+  source         = "../microservice"
+  name           = "circleguard-dashboard-service"
+  container_name = "dashboard"
+  image          = "circleguard-dashboard-service:${var.image_tag}"
+  namespace      = module.namespace.namespace
+  port           = 8084
+  replicas       = var.service_replicas
+  resources      = var.service_resources
+
+  env_from_config_map = [
+    { name = "SPRING_PROFILES_ACTIVE", key = "SPRING_PROFILES_ACTIVE" },
+    { name = "SPRING_DATASOURCE_USERNAME", key = "POSTGRES_USER" },
+  ]
+  env_from_secret = [
+    { name = "SPRING_DATASOURCE_PASSWORD", key = "POSTGRES_PASSWORD" },
+  ]
+  env_literal = [
+    { name = "SPRING_DATASOURCE_URL", value = "jdbc:postgresql://postgres:5432/circleguard_dashboard" },
+    { name = "PROMOTION_SERVICE_URL", value = "http://circleguard-promotion-service:8088" },
+  ]
+
+  depends_on = [module.postgres, module.promotion_service]
+}
+
+module "file_service" {
+  source         = "../microservice"
+  name           = "circleguard-file-service"
+  container_name = "file"
+  image          = "circleguard-file-service:${var.image_tag}"
+  namespace      = module.namespace.namespace
+  port           = 8085
+  replicas       = var.service_replicas
+  resources      = var.service_resources
+
+  env_from_config_map = [
+    { name = "SPRING_PROFILES_ACTIVE", key = "SPRING_PROFILES_ACTIVE" },
+  ]
+
+  depends_on = [module.namespace]
+}
