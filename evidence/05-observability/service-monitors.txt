@@ -1,0 +1,14 @@
+NAME                                             AGE
+kube-prometheus-stack-alertmanager               22d
+kube-prometheus-stack-apiserver                  22d
+kube-prometheus-stack-coredns                    22d
+kube-prometheus-stack-grafana                    22d
+kube-prometheus-stack-kube-controller-manager    22d
+kube-prometheus-stack-kube-etcd                  22d
+kube-prometheus-stack-kube-proxy                 22d
+kube-prometheus-stack-kube-scheduler             22d
+kube-prometheus-stack-kube-state-metrics         22d
+kube-prometheus-stack-kubelet                    22d
+kube-prometheus-stack-operator                   22d
+kube-prometheus-stack-prometheus                 22d
+kube-prometheus-stack-prometheus-node-exporter   22d

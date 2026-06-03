@@ -1,13 +1,33 @@
-The monitoring namespace contains a working kube-prometheus-stack deployment.
+# Observability limitations in Docker Desktop Kubernetes
+
+The monitoring stack was deployed using kube-prometheus-stack in the `monitoring` namespace.
 
 The main observability components are running successfully:
-- Alertmanager
+
+- Prometheus
 - Grafana
+- Alertmanager
 - kube-state-metrics
 - Prometheus Operator
-- Prometheus
+- CoreDNS
+- kubelet
 
-The node-exporter pod appears in CrashLoopBackOff in the local Docker Desktop Kubernetes environment. This is documented as an environment-specific limitation and does not prevent Prometheus, Grafana, Alertmanager, kube-state-metrics or the Prometheus Operator from running.
+Some Prometheus targets appear in `DOWN` state, including:
+
+- kube-controller-manager
+- kube-scheduler
+- kube-etcd
+- kube-proxy
+- node-exporter
+
+This behavior is related to the local Docker Desktop Kubernetes environment. Docker Desktop does not expose all Kubernetes control plane metrics endpoints in the same way as a production Kubernetes cluster or a kubeadm-based installation. As a result, Prometheus receives `connection refused` errors when trying to scrape some internal metrics ports.
+
+The node-exporter pod appears in `CrashLoopBackOff`. In Windows with Docker Desktop, this can happen because node-exporter depends on host-level Linux paths and permissions such as `/proc`, `/sys` and host filesystem mounts, which are managed internally by Docker Desktop's Linux VM.
+
+For this academic delivery, the monitoring stack was kept unchanged to avoid breaking the working Prometheus and Grafana deployment. The limitation is documented, and evidence is provided showing that the core observability components are running and that Prometheus is successfully scraping available targets.
+
+This does not prevent the project from demonstrating a functional observability baseline.
+
 
 ### Node-Exporter
 Name:             kube-prometheus-stack-prometheus-node-exporter-w42tt
