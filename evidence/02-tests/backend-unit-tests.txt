@@ -1,0 +1,352 @@
+> Task :services:clean UP-TO-DATE
+> Task :services:circleguard-auth-service:clean
+> Task :services:circleguard-dashboard-service:clean
+> Task :services:circleguard-file-service:clean
+> Task :services:circleguard-form-service:clean
+> Task :services:circleguard-gateway-service:clean
+> Task :services:circleguard-identity-service:clean
+> Task :services:circleguard-notification-service:clean
+> Task :services:circleguard-promotion-service:clean
+> Task :services:checkKotlinGradlePluginConfigurationErrors
+> Task :services:compileKotlin NO-SOURCE
+> Task :services:compileJava NO-SOURCE
+> Task :services:processResources NO-SOURCE
+> Task :services:classes UP-TO-DATE
+> Task :services:compileTestKotlin NO-SOURCE
+> Task :services:compileTestJava NO-SOURCE
+> Task :services:processTestResources NO-SOURCE
+> Task :services:testClasses UP-TO-DATE
+> Task :services:test NO-SOURCE
+> Task :services:circleguard-auth-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-auth-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-auth-service:compileJava
+> Task :services:circleguard-auth-service:processResources
+> Task :services:circleguard-auth-service:classes
+> Task :services:circleguard-auth-service:compileTestKotlin NO-SOURCE
+> Task :services:circleguard-auth-service:compileTestJava
+> Task :services:circleguard-auth-service:processTestResources
+> Task :services:circleguard-auth-service:testClasses
+> Task :services:circleguard-auth-service:test
+> Task :services:circleguard-dashboard-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-dashboard-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-dashboard-service:compileJava
+> Task :services:circleguard-dashboard-service:processResources
+> Task :services:circleguard-dashboard-service:classes
+> Task :services:circleguard-dashboard-service:compileTestKotlin NO-SOURCE
+> Task :services:circleguard-dashboard-service:compileTestJava
+> Task :services:circleguard-dashboard-service:processTestResources NO-SOURCE
+> Task :services:circleguard-dashboard-service:testClasses
+> Task :services:circleguard-dashboard-service:test
+> Task :services:circleguard-file-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-file-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-file-service:compileJava
+> Task :services:circleguard-file-service:processResources
+> Task :services:circleguard-file-service:classes
+> Task :services:circleguard-file-service:compileTestKotlin NO-SOURCE
+> Task :services:circleguard-file-service:compileTestJava
+> Task :services:circleguard-file-service:processTestResources NO-SOURCE
+> Task :services:circleguard-file-service:testClasses
+> Task :services:circleguard-file-service:test
+> Task :services:circleguard-form-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-form-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-form-service:compileJava
+> Task :services:circleguard-form-service:processResources
+> Task :services:circleguard-form-service:classes
+> Task :services:circleguard-form-service:compileTestKotlin NO-SOURCE
+
+> Task :services:circleguard-form-service:compileTestJava
+
+> Task :services:circleguard-form-service:processTestResources NO-SOURCE
+> Task :services:circleguard-form-service:testClasses
+> Task :services:circleguard-form-service:test
+> Task :services:circleguard-gateway-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-gateway-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-gateway-service:compileJava
+> Task :services:circleguard-gateway-service:processResources
+> Task :services:circleguard-gateway-service:classes
+> Task :services:circleguard-gateway-service:compileTestKotlin NO-SOURCE
+
+> Task :services:circleguard-gateway-service:compileTestJava
+
+> Task :services:circleguard-gateway-service:processTestResources NO-SOURCE
+> Task :services:circleguard-gateway-service:testClasses
+> Task :services:circleguard-gateway-service:test
+> Task :services:circleguard-identity-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-identity-service:compileKotlin NO-SOURCE
+
+> Task :services:circleguard-identity-service:compileJava
+
+> Task :services:circleguard-identity-service:processResources
+> Task :services:circleguard-identity-service:classes
+> Task :services:circleguard-identity-service:compileTestKotlin NO-SOURCE
+> Task :services:circleguard-identity-service:compileTestJava
+> Task :services:circleguard-identity-service:processTestResources
+> Task :services:circleguard-identity-service:testClasses
+2026-06-02T20:22:14.085-05:00  INFO 19696 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: drop table if exists identity_mappings cascade 
+> Task :services:circleguard-identity-service:test
+> Task :services:circleguard-notification-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-notification-service:compileKotlin NO-SOURCE
+> Task :services:circleguard-notification-service:compileJava
+> Task :services:circleguard-notification-service:processResources
+> Task :services:circleguard-notification-service:classes
+> Task :services:circleguard-notification-service:compileTestKotlin NO-SOURCE
+> Task :services:circleguard-notification-service:compileTestJava
+> Task :services:circleguard-notification-service:processTestResources NO-SOURCE
+> Task :services:circleguard-notification-service:testClasses
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-3, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-1, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-3, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-2, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-1, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-3, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-2, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-priority-group-1, groupId=notification-priority-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:29.319-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-2, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-3, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-2, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-1, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-3, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-1, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.321-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-2, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:29.327-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:29.331-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-2 unregistered
+2026-06-02T20:22:29.332-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:29.332-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-priority-group-1 unregistered
+2026-06-02T20:22:29.333-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-priority-group: Consumer stopped
+2026-06-02T20:22:29.333-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-3 unregistered
+2026-06-02T20:22:29.333-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:29.428-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:29.429-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:29.429-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:29.552-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:29.552-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:29.552-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:29.678-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:29.678-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:29.678-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:29.834-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:29.835-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:29.835-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.054-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.054-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.054-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.115-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:30.116-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.116-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.131-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.131-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.131-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.193-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:30.193-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.193-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.304-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:30.304-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.304-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.644-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.645-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.645-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.660-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.661-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.661-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.708-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.708-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.708-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.942-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.942-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.942-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:30.974-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:30.974-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:30.974-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:31.052-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:31.052-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:31.052-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:31.162-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:31.162-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:31.162-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:31.286-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Node -1 disconnected.
+2026-06-02T20:22:31.287-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:31.288-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:31.302-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Node -1 disconnected.
+2026-06-02T20:22:31.302-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:31.302-05:00  WARN 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-5, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.433-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-4, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-6, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.434-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.438-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-5 unregistered
+2026-06-02T20:22:31.438-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:31.439-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-6 unregistered
+2026-06-02T20:22:31.439-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:31.440-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-priority-group-4 unregistered
+2026-06-02T20:22:31.440-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-priority-group: Consumer stopped
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.445-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-7, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-8, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.446-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-9, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.447-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.447-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.448-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.448-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.448-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.448-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.449-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.449-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.450-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.451-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-priority-group-7 unregistered
+2026-06-02T20:22:31.452-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-priority-group: Consumer stopped
+2026-06-02T20:22:31.454-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-8 unregistered
+2026-06-02T20:22:31.454-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:31.454-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-9 unregistered
+2026-06-02T20:22:31.454-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:31.457-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.458-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.459-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-12, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.459-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-priority-group-10, groupId=notification-priority-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.459-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.459-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-notification-group-11, groupId=notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:31.460-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.460-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.460-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.461-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:31.468-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-priority-group-10 unregistered
+2026-06-02T20:22:31.468-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-priority-group: Consumer stopped
+2026-06-02T20:22:31.468-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-12 unregistered
+2026-06-02T20:22:31.469-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+2026-06-02T20:22:31.469-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-notification-group-11 unregistered
+2026-06-02T20:22:31.469-05:00  INFO 26088 --- [circleguard-notification-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : notification-group: Consumer stopped
+> Task :services:circleguard-notification-service:test
+> Task :services:circleguard-promotion-service:checkKotlinGradlePluginConfigurationErrors
+> Task :services:circleguard-promotion-service:compileKotlin NO-SOURCE
+
+> Task :services:circleguard-promotion-service:compileJava
+
+> Task :services:circleguard-promotion-service:processResources
+> Task :services:circleguard-promotion-service:classes
+> Task :services:circleguard-promotion-service:compileTestKotlin NO-SOURCE
+
+> Task :services:circleguard-promotion-service:compileTestJava
+
+> Task :services:circleguard-promotion-service:processTestResources
+> Task :services:circleguard-promotion-service:testClasses
+2026-06-02T20:22:50.771-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-1, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.771-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-1, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.771-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-2, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.771-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-promotion-service-group-1, groupId=promotion-service-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:50.771-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-2, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.772-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-promotion-service-group-2, groupId=promotion-service-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:50.773-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-1, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.774-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-1, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.774-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-2, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.774-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-2, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:50.775-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:50.775-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:50.775-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:50.775-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:50.776-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:50.776-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:50.779-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-promotion-service-group-1 unregistered
+2026-06-02T20:22:50.779-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-promotion-service-group-2 unregistered
+2026-06-02T20:22:50.779-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : promotion-service-group: Consumer stopped
+2026-06-02T20:22:50.779-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : promotion-service-group: Consumer stopped
+2026-06-02T20:22:50.786-05:00  INFO 7584 --- [circleguard-promotion-service] [ionShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 2129442376
+2026-06-02T20:22:50.788-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Node -1 disconnected.
+2026-06-02T20:22:50.788-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Node -1 disconnected.
+2026-06-02T20:22:50.788-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:50.788-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:50.788-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:50.788-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:50.961-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Node -1 disconnected.
+2026-06-02T20:22:50.961-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:50.962-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:50.972-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Node -1 disconnected.
+2026-06-02T20:22:50.974-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2026-06-02T20:22:50.975-05:00  WARN 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2026-06-02T20:22:51.022-05:00  INFO 7584 --- [circleguard-promotion-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-02T20:22:51.038-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.038-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.038-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.038-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] fkaConsumerFactory$ExtendedKafkaConsumer : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-3, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.039-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-promotion-service-group-4, groupId=promotion-service-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-02T20:22:51.040-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:51.040-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:51.040-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:51.040-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-06-02T20:22:51.041-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-02T20:22:51.041-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-06-02T20:22:51.045-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-promotion-service-group-3 unregistered
+2026-06-02T20:22:51.045-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : promotion-service-group: Consumer stopped
+2026-06-02T20:22:51.046-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-promotion-service-group-4 unregistered
+2026-06-02T20:22:51.046-05:00  INFO 7584 --- [circleguard-promotion-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : promotion-service-group: Consumer stopped
+2026-06-02T20:22:51.047-05:00  INFO 7584 --- [circleguard-promotion-service] [ionShutdownHook] o.neo4j.driver.internal.InternalDriver   : Closing driver instance 5849388
+2026-06-02T20:22:51.295-05:00  INFO 7584 --- [circleguard-promotion-service] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+> Task :services:circleguard-promotion-service:test
+
+[Incubating] Problems report is available at: file:///C:/Users/maria/OneDrive/Desktop/Octavo%20Semestre/Ingesoft5/circle-guard-public/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 31s
+53 actionable tasks: 52 executed, 1 up-to-date
