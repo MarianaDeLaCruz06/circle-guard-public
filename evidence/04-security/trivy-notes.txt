@@ -1,0 +1,8 @@
+Trivy was executed using Docker because it was not installed locally in the Windows environment.
+
+The filesystem scan was attempted with the official aquasec/trivy image against the project directory. During execution, the local Windows/Git Bash environment caused path and output handling issues, so the scan evidence was documented as an execution note instead of a vulnerability report.
+
+Command attempted:
+docker run --rm -v "C:\Users\maria\OneDrive\Desktop\Octavo Semestre\Ingesoft5\circle-guard-public:/project" aquasec/trivy:latest fs --severity HIGH,CRITICAL --no-progress /project
+
+The project also includes OWASP ZAP baseline evidence as the main security validation artifact.
