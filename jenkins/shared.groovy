@@ -222,6 +222,8 @@ def smokeTestAllServices() {
     smokeTest('circleguard-promotion-service', '8088')
     smokeTest('circleguard-notification-service', '8082')
     smokeTest('circleguard-gateway-service', '8087')
+    smokeTest('circleguard-dashboard-service', '8084')
+    smokeTest('circleguard-file-service', '8085')
 }
 
 // ---------------------------------------------------------------------------

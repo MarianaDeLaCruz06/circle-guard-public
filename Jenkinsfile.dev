@@ -12,7 +12,7 @@ pipeline {
 
     environment {
         KUBE_NAMESPACE = 'circleguard-dev'
-        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service'
+        SERVICES = 'circleguard-auth-service circleguard-identity-service circleguard-form-service circleguard-promotion-service circleguard-notification-service circleguard-gateway-service circleguard-dashboard-service circleguard-file-service'
         BUILD_CHANNEL = 'dev'
         // Optional. Configure these in Jenkins → Manage → Credentials or in the job config.
         // SONAR_HOST_URL = 'http://sonarqube:9000'

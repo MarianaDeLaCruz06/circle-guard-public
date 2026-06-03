@@ -35,6 +35,7 @@ variable "databases" {
     "circleguard_identity",
     "circleguard_form",
     "circleguard_promotion",
+    "circleguard_dashboard",
   ]
 }
 

@@ -11,6 +11,8 @@ output "services" {
     promotion    = "http://${module.promotion_service.service_name}:${module.promotion_service.port}"
     notification = "http://${module.notification_service.service_name}:${module.notification_service.port}"
     gateway      = "http://${module.gateway_service.service_name}:${module.gateway_service.port}"
+    dashboard    = "http://${module.dashboard_service.service_name}:${module.dashboard_service.port}"
+    file         = "http://${module.file_service.service_name}:${module.file_service.port}"
   }
 }
 

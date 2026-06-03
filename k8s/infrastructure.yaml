@@ -8,6 +8,7 @@ data:
     CREATE DATABASE circleguard_identity;
     CREATE DATABASE circleguard_form;
     CREATE DATABASE circleguard_promotion;
+    CREATE DATABASE circleguard_dashboard;
 ---
 apiVersion: apps/v1
 kind: Deployment
