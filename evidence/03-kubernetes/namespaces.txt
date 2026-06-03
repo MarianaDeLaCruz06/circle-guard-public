@@ -1,0 +1,9 @@
+NAME                 STATUS   AGE
+circleguard-dev      Active   29d
+circleguard-master   Active   29d
+circleguard-stage    Active   29d
+default              Active   29d
+kube-node-lease      Active   29d
+kube-public          Active   29d
+kube-system          Active   29d
+monitoring           Active   22d

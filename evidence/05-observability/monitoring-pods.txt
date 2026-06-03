@@ -1,7 +1,7 @@
-NAME                                                       READY   STATUS             RESTARTS       AGE
-alertmanager-kube-prometheus-stack-alertmanager-0          2/2     Running            0              22d
-kube-prometheus-stack-grafana-7fb9b47d4-v2jm2              3/3     Running            0              22d
-kube-prometheus-stack-kube-state-metrics-d68dcbc84-z5pss   1/1     Running            0              22d
-kube-prometheus-stack-operator-5895df479f-6bxtn            1/1     Running            0              22d
-kube-prometheus-stack-prometheus-node-exporter-w42tt       0/1     CrashLoopBackOff   19 (85s ago)   22d
-prometheus-kube-prometheus-stack-prometheus-0              2/2     Running            0              22d
+NAME                                                       READY   STATUS             RESTARTS         AGE
+alertmanager-kube-prometheus-stack-alertmanager-0          2/2     Running            0                22d
+kube-prometheus-stack-grafana-7fb9b47d4-v2jm2              3/3     Running            0                22d
+kube-prometheus-stack-kube-state-metrics-d68dcbc84-z5pss   1/1     Running            0                22d
+kube-prometheus-stack-operator-5895df479f-6bxtn            1/1     Running            0                22d
+kube-prometheus-stack-prometheus-node-exporter-w42tt       0/1     CrashLoopBackOff   23 (4m20s ago)   22d
+prometheus-kube-prometheus-stack-prometheus-0              2/2     Running            0                22d

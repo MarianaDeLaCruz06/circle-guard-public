@@ -1,0 +1,60 @@
+NAMESPACE            NAME                                                       READY   STATUS             RESTARTS         AGE
+circleguard-dev      circleguard-auth-service-57cdcd58dc-hd9t5                  0/1     ImagePullBackOff   0                29d
+circleguard-dev      circleguard-form-service-69c6697dbf-nzq5s                  0/1     ImagePullBackOff   0                29d
+circleguard-dev      circleguard-gateway-service-86c74fbb69-jwxfg               0/1     ImagePullBackOff   0                29d
+circleguard-dev      circleguard-identity-service-597dd558f7-r76m7              0/1     ImagePullBackOff   0                29d
+circleguard-dev      circleguard-notification-service-75b7c66d7b-zs6vl          0/1     ImagePullBackOff   0                29d
+circleguard-dev      circleguard-promotion-service-76cb5bc4bf-g9txq             0/1     ImagePullBackOff   1 (29d ago)      29d
+circleguard-dev      kafka-76d578d9d8-bvwvf                                     0/1     CrashLoopBackOff   21 (2m42s ago)   29d
+circleguard-dev      neo4j-54cb95bccb-qwxfg                                     1/1     Running            0                29d
+circleguard-dev      postgres-678dc4f87f-kn7hr                                  1/1     Running            0                29d
+circleguard-dev      redis-84579f5fc6-2pc24                                     1/1     Running            0                29d
+circleguard-dev      zookeeper-647dd87444-l2ckg                                 1/1     Running            0                29d
+circleguard-master   circleguard-auth-service-57cdcd58dc-bgz45                  0/1     ImagePullBackOff   0                29d
+circleguard-master   circleguard-form-service-69c6697dbf-rrzjr                  0/1     ImagePullBackOff   0                29d
+circleguard-master   circleguard-gateway-service-86c74fbb69-s56dm               0/1     ImagePullBackOff   0                29d
+circleguard-master   circleguard-identity-service-597dd558f7-xnxk5              0/1     ImagePullBackOff   0                29d
+circleguard-master   circleguard-notification-service-75b7c66d7b-pqll7          0/1     ImagePullBackOff   0                29d
+circleguard-master   circleguard-promotion-service-76cb5bc4bf-chmgx             0/1     ImagePullBackOff   1 (29d ago)      29d
+circleguard-master   kafka-7fcc7bf6f4-j5qb8                                     0/1     CrashLoopBackOff   22 (2m50s ago)   29d
+circleguard-master   neo4j-54cb95bccb-xssth                                     1/1     Running            0                29d
+circleguard-master   postgres-678dc4f87f-74c78                                  1/1     Running            0                29d
+circleguard-master   redis-84579f5fc6-nbfjw                                     1/1     Running            0                29d
+circleguard-master   zookeeper-647dd87444-hlqlh                                 1/1     Running            0                29d
+circleguard-stage    circleguard-auth-service-57cdcd58dc-44smc                  0/1     ImagePullBackOff   0                29d
+circleguard-stage    circleguard-form-service-69c6697dbf-46gzq                  0/1     ImagePullBackOff   0                29d
+circleguard-stage    circleguard-gateway-service-86c74fbb69-884t6               0/1     ImagePullBackOff   0                29d
+circleguard-stage    circleguard-identity-service-597dd558f7-vssgg              0/1     ImagePullBackOff   0                29d
+circleguard-stage    circleguard-notification-service-75b7c66d7b-hgwln          0/1     ImagePullBackOff   0                29d
+circleguard-stage    circleguard-promotion-service-76cb5bc4bf-2n9s7             0/1     ImagePullBackOff   1 (29d ago)      29d
+circleguard-stage    kafka-5c9678b5c-g7ks9                                      0/1     CrashLoopBackOff   21 (2m43s ago)   29d
+circleguard-stage    neo4j-54cb95bccb-g2ntl                                     1/1     Running            0                29d
+circleguard-stage    postgres-678dc4f87f-tfbbc                                  1/1     Running            0                29d
+circleguard-stage    redis-84579f5fc6-stcg7                                     1/1     Running            0                29d
+circleguard-stage    zookeeper-647dd87444-552gn                                 1/1     Running            0                29d
+default              circleguard-auth-service-57cdcd58dc-jtrps                  0/1     ImagePullBackOff   0                29d
+default              circleguard-form-service-69c6697dbf-98g7b                  0/1     ImagePullBackOff   0                29d
+default              circleguard-gateway-service-86c74fbb69-ckns6               0/1     ImagePullBackOff   0                29d
+default              circleguard-identity-service-597dd558f7-vb9w2              0/1     ImagePullBackOff   0                29d
+default              circleguard-notification-service-75b7c66d7b-mp2d9          0/1     ImagePullBackOff   0                29d
+default              circleguard-promotion-service-76cb5bc4bf-wwssg             0/1     ImagePullBackOff   0                29d
+default              kafka-6b58df885f-m62jl                                     0/1     CrashLoopBackOff   22 (2m42s ago)   29d
+default              neo4j-54cb95bccb-22wt8                                     1/1     Running            0                29d
+default              postgres-678dc4f87f-mq26c                                  1/1     Running            0                29d
+default              redis-84579f5fc6-69qhb                                     1/1     Running            0                29d
+default              zookeeper-647dd87444-f6cnx                                 1/1     Running            0                29d
+kube-system          coredns-66bc5c9577-kttng                                   1/1     Running            0                29d
+kube-system          coredns-66bc5c9577-qnz8p                                   1/1     Running            0                29d
+kube-system          etcd-docker-desktop                                        1/1     Running            0                29d
+kube-system          kube-apiserver-docker-desktop                              1/1     Running            0                29d
+kube-system          kube-controller-manager-docker-desktop                     1/1     Running            0                29d
+kube-system          kube-proxy-fdh4f                                           1/1     Running            0                29d
+kube-system          kube-scheduler-docker-desktop                              1/1     Running            0                29d
+kube-system          storage-provisioner                                        1/1     Running            0                29d
+kube-system          vpnkit-controller                                          1/1     Running            0                29d
+monitoring           alertmanager-kube-prometheus-stack-alertmanager-0          2/2     Running            0                22d
+monitoring           kube-prometheus-stack-grafana-7fb9b47d4-v2jm2              3/3     Running            0                22d
+monitoring           kube-prometheus-stack-kube-state-metrics-d68dcbc84-z5pss   1/1     Running            0                22d
+monitoring           kube-prometheus-stack-operator-5895df479f-6bxtn            1/1     Running            0                22d
+monitoring           kube-prometheus-stack-prometheus-node-exporter-w42tt       0/1     CrashLoopBackOff   22 (3m11s ago)   22d
+monitoring           prometheus-kube-prometheus-stack-prometheus-0              2/2     Running            0                22d

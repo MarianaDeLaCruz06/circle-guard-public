@@ -1,0 +1,104 @@
+The monitoring namespace contains a working kube-prometheus-stack deployment.
+
+The main observability components are running successfully:
+- Alertmanager
+- Grafana
+- kube-state-metrics
+- Prometheus Operator
+- Prometheus
+
+The node-exporter pod appears in CrashLoopBackOff in the local Docker Desktop Kubernetes environment. This is documented as an environment-specific limitation and does not prevent Prometheus, Grafana, Alertmanager, kube-state-metrics or the Prometheus Operator from running.
+
+### Node-Exporter
+Name:             kube-prometheus-stack-prometheus-node-exporter-w42tt
+Namespace:        monitoring
+Priority:         0
+Service Account:  kube-prometheus-stack-prometheus-node-exporter
+Node:             docker-desktop/192.168.65.3
+Start Time:       Sun, 10 May 2026 23:56:04 -0500
+Labels:           app.kubernetes.io/component=metrics
+                  app.kubernetes.io/instance=kube-prometheus-stack
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=prometheus-node-exporter
+                  app.kubernetes.io/part-of=prometheus-node-exporter
+                  app.kubernetes.io/version=1.11.1
+                  controller-revision-hash=7fc7b8cf6
+                  helm.sh/chart=prometheus-node-exporter-4.55.0
+                  jobLabel=node-exporter
+                  pod-template-generation=1
+                  release=kube-prometheus-stack
+Annotations:      cluster-autoscaler.kubernetes.io/safe-to-evict: true
+Status:           Running
+IP:               192.168.65.3
+IPs:
+  IP:           192.168.65.3
+Controlled By:  DaemonSet/kube-prometheus-stack-prometheus-node-exporter
+Containers:
+  node-exporter:
+    Container ID:  docker://1310a3aac40e477a817c38679cd06374cf627041d936b4b6f8628504a7e9476e
+    Image:         quay.io/prometheus/node-exporter:v1.11.1
+    Image ID:      docker-pullable://quay.io/prometheus/node-exporter@sha256:0f422f62c15f154af8d8572b23d623aebfb10cec73a5c654d18f911f3f9df241
+    Port:          9100/TCP (http-metrics)
+    Host Port:     9100/TCP (http-metrics)
+    Args:
+      --path.procfs=/host/proc
+      --path.sysfs=/host/sys
+      --path.rootfs=/host/root
+      --path.udev.data=/host/root/run/udev/data
+      --web.listen-address=[$(HOST_IP)]:9100
+      --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/containerd/.+|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+      --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs|erofs)$
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       ContainerCannotRun
+      Message:      path / is mounted on / but it is not a shared or slave mount
+      Exit Code:    128
+      Started:      Tue, 02 Jun 2026 23:29:29 -0500
+      Finished:     Tue, 02 Jun 2026 23:29:29 -0500
+    Ready:          False
+    Restart Count:  23
+    Liveness:       http-get http://:http-metrics/ delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:      http-get http://:http-metrics/ delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      HOST_IP:  0.0.0.0
+    Mounts:
+      /host/proc from proc (ro)
+      /host/root from root (ro)
+      /host/sys from sys (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  proc:
+    Type:          HostPath (bare host directory volume)
+    Path:          /proc
+    HostPathType:  
+  sys:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:  
+  root:
+    Type:          HostPath (bare host directory volume)
+    Path:          /
+    HostPathType:  
+QoS Class:         BestEffort
+Node-Selectors:    kubernetes.io/os=linux
+Tolerations:       :NoSchedule op=Exists
+                   node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                   node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                   node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                   node.kubernetes.io/not-ready:NoExecute op=Exists
+                   node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                   node.kubernetes.io/unreachable:NoExecute op=Exists
+                   node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason   Age                    From     Message
+  ----     ------   ----                   ----     -------
+  Normal   Created  40m (x17 over 131m)    kubelet  Created container: node-exporter
+  Normal   Pulled   4m42s (x23 over 131m)  kubelet  Container image "quay.io/prometheus/node-exporter:v1.11.1" already present on machine
+  Warning  BackOff  67s (x417 over 131m)   kubelet  Back-off restarting failed container node-exporter in pod kube-prometheus-stack-prometheus-node-exporter-w42tt_monitoring(5bc17cd9-6e17-41b7-bd23-555b7c01437f)
