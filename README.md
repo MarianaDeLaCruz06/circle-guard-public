@@ -170,9 +170,9 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 | 3 | Patrones de Diseño | 10% | ✅ | [`docs/PATRONES_DE_DISENO.md`](docs/PATRONES_DE_DISENO.md) |
 | 4 | CI/CD Avanzado | 15% | ✅ | [`docs/CICD_AVANZADO.md`](docs/CICD_AVANZADO.md) · [`Jenkinsfile.dev`](Jenkinsfile.dev) · [`Jenkinsfile.stage`](Jenkinsfile.stage) · [`Jenkinsfile.master`](Jenkinsfile.master) · [`jenkins/shared.groovy`](jenkins/shared.groovy) |
 | 5 | Pruebas Completas | 15% | ✅ | [`docs/PRUEBAS_COMPLETAS.md`](docs/PRUEBAS_COMPLETAS.md) · JaCoCo [`build.gradle.kts`](build.gradle.kts) · OWASP ZAP [`security/README.md`](security/README.md) · E2E [`e2e/`](e2e/) · Locust [`performance/locust/`](performance/locust/) |
-| 6 | Change Management & Release Notes | 5% | ⚠️ parcial | Release Notes automáticas en `Jenkinsfile.master`; falta proceso formal de rollback |
-| 7 | Observabilidad | 10% | ❌ | Pendiente: Prometheus + Grafana, ELK, Jaeger |
-| 8 | Seguridad | 5% | ❌ | Pendiente: TLS, secrets management, OWASP ZAP |
+| 6 | Change Management & Release Notes | 5% | ✅ | [`docs/CHANGE_MANAGEMENT.md`](docs/CHANGE_MANAGEMENT.md) · [`docs/ROLLBACK_PLAYBOOK.md`](docs/ROLLBACK_PLAYBOOK.md) · [`change-management/CHANGE_REQUEST_TEMPLATE.md`](change-management/CHANGE_REQUEST_TEMPLATE.md) · [`scripts/rollback-k8s.sh`](scripts/rollback-k8s.sh) |
+| 7 | Observabilidad | 10% | ✅ | [`observability/README.md`](observability/README.md) · [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md) · Prometheus + Grafana via [`observability/install-monitoring.sh`](observability/install-monitoring.sh) |
+| 8 | Seguridad | 5% | ✅ | [`security/README.md`](security/README.md) · Trivy + OWASP ZAP integrados en pipelines |
 | 9 | Documentación | 10% | ⚠️ parcial | Este README + docs por requisito; pendiente guías de operación formales |
 
 ### Resumen de los requisitos completos
@@ -191,3 +191,11 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 - **Notificaciones de fallo** vía email con fallback.
 - **Aprobación manual a producción** con timeout 60 min y submitters restringidos.
 - **Cleanup automático** (`buildDiscarder`, `cleanupDockerImages`, `cleanupWorkspace`) para mantener el agente bajo control de disco.
+
+**Req. 6 — Change Management y Release Notes (5%)** — Proceso formal documentado:
+- **Clasificación de cambios** (Standard / Normal / Emergency) con criterios, aprobación y ventana.
+- **Matriz RACI** explícita (PO, SM, Dev/DevOps Lead, CAB).
+- **Plantilla de Change Request** para PRs y issues.
+- **Release Notes automáticas** generadas por `Jenkinsfile.master` y archivadas como artifact.
+- **Tag git semántico** (`vX.Y.Z`) publicado opcionalmente con `CREATE_GIT_TAG=true`.
+- **Playbook de rollback** con 7 escenarios concretos (microservicio, ConfigMap, DB, Terraform, release completo, emergencia de seguridad) + scripts `rollback-k8s.{sh,ps1}` ejecutables.
