@@ -87,19 +87,33 @@ pipeline {
         stage('OWASP ZAP Security Scan') {
             steps {
                 script {
-                    if (lib.hasTool('docker')) {
-                        def reportDir = "${env.WORKSPACE}/security/reports"
-                        lib.runCommandStatus("mkdir -p ${reportDir}")
-                        def status = lib.runCommandStatus(
-                            "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://circleguard-gateway-service:8087 -r zap_report.html"
-                        )
-                        if (status != 0) {
-                            echo 'WARNING: OWASP ZAP encontro alertas de seguridad (advisory en stage). Revisa security/reports/zap_report.html.'
-                        }
-                        archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
-                    } else {
+                    if (!lib.hasTool('docker')) {
                         echo 'Docker no esta disponible; se omite el escaneo OWASP ZAP. Ejecuta security/zap-scan.sh manualmente.'
+                        return
                     }
+                    // ZAP_TARGET default points at the gateway DNS name inside the
+                    // K8s service network (resolvable cuando hay deploy real).
+                    // Permite override via parameter o env var para entornos
+                    // donde el gateway viva en host.docker.internal o similar.
+                    def zapTarget = env.ZAP_TARGET ?: 'http://circleguard-gateway-service:8087'
+                    // Probar conectividad antes de lanzar ZAP. Sin esto, zap-baseline
+                    // se cuelga ~2 min haciendo DNS hasta time out.
+                    def reachable = lib.runCommandStatus(
+                        "docker run --rm curlimages/curl:8.10.1 -sS -o /dev/null --max-time 5 -w '%{http_code}' ${zapTarget} >/dev/null 2>&1"
+                    ) == 0
+                    if (!reachable) {
+                        echo "WARNING: ${zapTarget} no es alcanzable desde el agente Jenkins (probablemente no hay deploy en K8s). Se omite el escaneo OWASP ZAP. Ejecuta security/zap-scan.sh localmente con los services arriba."
+                        return
+                    }
+                    def reportDir = "${env.WORKSPACE}/security/reports"
+                    lib.runCommandStatus("mkdir -p ${reportDir}")
+                    def status = lib.runCommandStatus(
+                        "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t ${zapTarget} -r zap_report.html"
+                    )
+                    if (status != 0) {
+                        echo 'WARNING: OWASP ZAP encontro alertas de seguridad (advisory en stage). Revisa security/reports/zap_report.html.'
+                    }
+                    archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
                 }
             }
         }

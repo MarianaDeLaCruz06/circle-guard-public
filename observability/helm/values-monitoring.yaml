@@ -1,0 +1,51 @@
+# Custom values for the kube-prometheus-stack Helm chart.
+# Aplicados por observability/install-monitoring.sh.
+#
+# Defaults son razonables; este archivo solo agrega:
+#   - retencion mas larga para la demo academica
+#   - dashboard CircleGuard preinstalado en Grafana
+#   - tolerancia a las limitaciones de Docker Desktop (node-exporter opcional)
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    # Permite que CircleGuard ScrapeConfigs adicionales aparezcan automaticamente
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+
+grafana:
+  adminPassword: prom-operator
+  # Provisiona el dashboard de CircleGuard al primer arranque
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: circleguard
+          orgId: 1
+          folder: CircleGuard
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/circleguard
+  dashboardsConfigMaps:
+    circleguard: circleguard-overview
+
+# Docker Desktop no expone metrics de etcd/controller-manager/scheduler
+# del mismo modo que un cluster productivo. Desactivamos los scrapes
+# que generan DOWNs falsos en el evaluador.
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeEtcd:
+  enabled: false
+kubeProxy:
+  enabled: false
+
+# node-exporter en Docker Desktop Windows queda en CrashLoopBackOff por
+# rutas host. Lo dejamos opcional via comentario: si corres en cluster
+# real (GKE, EKS, kind, minikube en Linux) ponlo en true.
+nodeExporter:
+  enabled: false
