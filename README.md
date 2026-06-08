@@ -173,7 +173,7 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 | 6 | Change Management & Release Notes | 5% | ✅ | [`docs/CHANGE_MANAGEMENT.md`](docs/CHANGE_MANAGEMENT.md) · [`docs/ROLLBACK_PLAYBOOK.md`](docs/ROLLBACK_PLAYBOOK.md) · [`change-management/CHANGE_REQUEST_TEMPLATE.md`](change-management/CHANGE_REQUEST_TEMPLATE.md) · [`scripts/rollback-k8s.sh`](scripts/rollback-k8s.sh) |
 | 7 | Observabilidad | 10% | ✅ | [`observability/README.md`](observability/README.md) · [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md) · Prometheus + Grafana via [`observability/install-monitoring.sh`](observability/install-monitoring.sh) |
 | 8 | Seguridad | 5% | ✅ | [`security/README.md`](security/README.md) · Trivy + OWASP ZAP integrados en pipelines |
-| 9 | Documentación | 10% | ⚠️ parcial | Este README + docs por requisito; pendiente guías de operación formales |
+| 9 | Documentación | 10% | ✅ | [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md) · [`docs/MANUAL_OPERACIONES.md`](docs/MANUAL_OPERACIONES.md) · [`docs/ANALISIS_COSTOS.md`](docs/ANALISIS_COSTOS.md) · [`docs/ANALISIS_PRUEBAS.md`](docs/ANALISIS_PRUEBAS.md) — pendiente video + presentación |
 
 ### Resumen de los requisitos completos
 
@@ -199,3 +199,11 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 - **Release Notes automáticas** generadas por `Jenkinsfile.master` y archivadas como artifact.
 - **Tag git semántico** (`vX.Y.Z`) publicado opcionalmente con `CREATE_GIT_TAG=true`.
 - **Playbook de rollback** con 7 escenarios concretos (microservicio, ConfigMap, DB, Terraform, release completo, emergencia de seguridad) + scripts `rollback-k8s.{sh,ps1}` ejecutables.
+
+**Req. 9 — Documentación (10%)** — Documentación operativa y arquitectónica completa:
+- [`ARQUITECTURA.md`](docs/ARQUITECTURA.md) — vista de alto nivel + diagramas Mermaid de componentes, flujos críticos (entrada al campus, promoción event-driven, resiliencia con CB) y topología K8s. Stack tecnológico justificado + 7 ADRs.
+- [`MANUAL_OPERACIONES.md`](docs/MANUAL_OPERACIONES.md) — runbook: bootstrap from-scratch, operaciones de rutina (deploys, rollbacks, feature toggles, backups), troubleshooting de 6 incidentes comunes, on-call procedures con severidades y cheat sheet.
+- [`ANALISIS_COSTOS.md`](docs/ANALISIS_COSTOS.md) — estimación por componente para GCP/AWS/Azure (~$680/mes), comparativa, estrategias de optimización aplicadas y costo por unidad de funcionalidad.
+- [`ANALISIS_PRUEBAS.md`](docs/ANALISIS_PRUEBAS.md) — coverage por servicio (73% promedio), benchmark Locust (20.5 req/s, 0 fallos), hallazgos ZAP (0 HIGH), Trivy (0 HIGH/CRITICAL en master), SonarQube Quality Gate PASS y lecciones aprendidas.
+
+Pendientes humanos: grabar el video demostrativo y preparar la presentación (20-30 min) — ambas tareas requieren intervención manual del equipo.
