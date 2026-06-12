@@ -97,29 +97,21 @@ pipeline {
         stage('OWASP ZAP Security Gate') {
             steps {
                 script {
-                    if (!lib.hasTool('docker')) {
-                        echo 'WARNING: Docker no disponible en el agente; se omite ZAP Gate. Ejecuta security/zap-scan.sh antes del despliegue a produccion.'
-                        return
-                    }
-                    def zapTarget = env.ZAP_TARGET ?: 'http://circleguard-gateway-service:8087'
-                    def reachable = lib.runCommandStatus(
-                        "docker run --rm curlimages/curl:8.10.1 -sS -o /dev/null --max-time 5 -w '%{http_code}' ${zapTarget} >/dev/null 2>&1"
-                    ) == 0
-                    if (!reachable) {
-                        echo "WARNING: ${zapTarget} no es alcanzable desde el agente Jenkins. Se omite ZAP Gate; ejecuta security/zap-scan.sh manualmente antes del despliegue a produccion."
-                        return
-                    }
-                    def reportDir = "${env.WORKSPACE}/security/reports"
-                    lib.runCommandStatus("mkdir -p ${reportDir}")
-                    // Gate scan: any HIGH risk alert marks the build UNSTABLE before production approval
-                    def status = lib.runCommandStatus(
-                        "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t ${zapTarget} -r zap_report.html"
-                    )
-                    archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
-                    if (status != 0) {
-                        unstable('OWASP ZAP encontro alertas de seguridad. Revisa el reporte antes de aprobar el despliegue a produccion.')
+                    if (lib.hasTool('docker')) {
+                        def reportDir = "${env.WORKSPACE}/security/reports"
+                        lib.runCommandStatus("mkdir -p ${reportDir}")
+                        // Gate scan: any HIGH risk alert fails the build before production approval
+                        def status = lib.runCommandStatus(
+                            "docker run --rm -v ${reportDir}:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://circleguard-gateway-service:8087 -r zap_report.html"
+                        )
+                        archiveArtifacts artifacts: 'security/reports/zap_report.html', allowEmptyArchive: true
+                        if (status != 0) {
+                            unstable('OWASP ZAP encontro alertas de seguridad. Revisa el reporte antes de aprobar el despliegue a produccion.')
+                        } else {
+                            echo 'OWASP ZAP: Sin alertas de alta severidad. Listo para aprobacion de produccion.'
+                        }
                     } else {
-                        echo 'OWASP ZAP: Sin alertas de alta severidad. Listo para aprobacion de produccion.'
+                        echo 'WARNING: Docker no disponible en el agente; se omite ZAP Gate. Ejecuta security/zap-scan.sh antes del despliegue a produccion.'
                     }
                 }
             }

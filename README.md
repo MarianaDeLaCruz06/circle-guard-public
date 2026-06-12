@@ -170,10 +170,10 @@ Esta sección rastrea el cumplimiento de los requisitos del **Proyecto Final de 
 | 3 | Patrones de Diseño | 10% | ✅ | [`docs/PATRONES_DE_DISENO.md`](docs/PATRONES_DE_DISENO.md) |
 | 4 | CI/CD Avanzado | 15% | ✅ | [`docs/CICD_AVANZADO.md`](docs/CICD_AVANZADO.md) · [`Jenkinsfile.dev`](Jenkinsfile.dev) · [`Jenkinsfile.stage`](Jenkinsfile.stage) · [`Jenkinsfile.master`](Jenkinsfile.master) · [`jenkins/shared.groovy`](jenkins/shared.groovy) |
 | 5 | Pruebas Completas | 15% | ✅ | [`docs/PRUEBAS_COMPLETAS.md`](docs/PRUEBAS_COMPLETAS.md) · JaCoCo [`build.gradle.kts`](build.gradle.kts) · OWASP ZAP [`security/README.md`](security/README.md) · E2E [`e2e/`](e2e/) · Locust [`performance/locust/`](performance/locust/) |
-| 6 | Change Management & Release Notes | 5% | ✅ | [`docs/CHANGE_MANAGEMENT.md`](docs/CHANGE_MANAGEMENT.md) · [`docs/ROLLBACK_PLAYBOOK.md`](docs/ROLLBACK_PLAYBOOK.md) · [`change-management/CHANGE_REQUEST_TEMPLATE.md`](change-management/CHANGE_REQUEST_TEMPLATE.md) · [`scripts/rollback-k8s.sh`](scripts/rollback-k8s.sh) |
-| 7 | Observabilidad | 10% | ✅ | [`observability/README.md`](observability/README.md) · [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md) · Prometheus + Grafana via [`observability/install-monitoring.sh`](observability/install-monitoring.sh) |
-| 8 | Seguridad | 5% | ✅ | [`security/README.md`](security/README.md) · Trivy + OWASP ZAP integrados en pipelines |
-| 9 | Documentación | 10% | ✅ | [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md) · [`docs/MANUAL_OPERACIONES.md`](docs/MANUAL_OPERACIONES.md) · [`docs/ANALISIS_COSTOS.md`](docs/ANALISIS_COSTOS.md) · [`docs/ANALISIS_PRUEBAS.md`](docs/ANALISIS_PRUEBAS.md) — pendiente video + presentación |
+| 6 | Change Management & Release Notes | 5% | ⚠️ parcial | Release Notes automáticas en `Jenkinsfile.master`; falta proceso formal de rollback |
+| 7 | Observabilidad | 10% | ❌ | Pendiente: Prometheus + Grafana, ELK, Jaeger |
+| 8 | Seguridad | 5% | ❌ | Pendiente: TLS, secrets management, OWASP ZAP |
+| 9 | Documentación | 10% | ⚠️ parcial | Este README + docs por requisito; pendiente guías de operación formales |
 
 ### Resumen de los requisitos completos
 

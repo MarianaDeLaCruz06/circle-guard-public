@@ -59,8 +59,8 @@ Hemos creado scripts automatizados para simplificar la ejecución tanto en siste
 ## 4. Reportes de Vulnerabilidades
 
 El script monta un volumen Docker local apuntando a `security/reports/`. Una vez finalizado el escaneo, se generará el siguiente archivo:
-*   [`security/reports/zap_report.html`](reports/zap_report.html) — abrirlo en el navegador para ver el resumen de alertas clasificadas por severidad: Alta, Media, Baja e Informativa.
-    *(El archivo se genera al correr el script y queda ignorado por git — no aparece en el repo).*
+*   [Reporte HTML de Vulnerabilidades ZAP](circle-guard-public/security/reports/zap_report.html)
+    *(Abre este reporte en tu navegador web para visualizar el resumen de alertas clasificadas por severidad: Alta, Media, Baja e Informativa).*
 
 ---
 
