@@ -5,7 +5,8 @@
 - **Valentina Gómez**
 - **Alexis Delgado**
 
-### Video: [![Circle-Guard-Video-Youtube](https://www.youtube.com/watch?v=LA23jlWIMEE)](https://www.youtube.com/watch?v=LA23jlWIMEE)
+### Video
+[![Circle-Guard-Video-Youtube](https://youtube.com)](https://www.youtube.com/watch?v=LA23jlWIMEE)
 
 **Absolute Privacy. High-Speed Containment. Secure Campus.**
 
