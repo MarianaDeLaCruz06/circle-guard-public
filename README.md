@@ -6,7 +6,7 @@
 - **Alexis Delgado**
 
 ### Video
-[![Circle-Guard-Video-Youtube](https://youtube.com)](https://www.youtube.com/watch?v=LA23jlWIMEE)
+[![Circle-Guard-Video-Youtube](https://www.youtube.com/watch?v=LA23jlWIMEE)](https://youtube.com)
 
 **Absolute Privacy. High-Speed Containment. Secure Campus.**
 
