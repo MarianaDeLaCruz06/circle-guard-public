@@ -1,8 +1,44 @@
-Trivy was executed using Docker because it was not installed locally in the Windows environment.
+Trivy execution notes
+======================
 
-The filesystem scan was attempted with the official aquasec/trivy image against the project directory. During execution, the local Windows/Git Bash environment caused path and output handling issues, so the scan evidence was documented as an execution note instead of a vulnerability report.
+Initial filesystem scan (Mariana's local environment)
+-----------------------------------------------------
+Trivy was executed using the official aquasec/trivy Docker image because it
+was not installed locally in her Windows environment. The output of that
+first run is preserved in trivy-fs-scan.txt as historical evidence of how
+the tool was bootstrapped.
 
 Command attempted:
-docker run --rm -v "C:\Users\maria\OneDrive\Desktop\Octavo Semestre\Ingesoft5\circle-guard-public:/project" aquasec/trivy:latest fs --severity HIGH,CRITICAL --no-progress /project
 
-The project also includes OWASP ZAP baseline evidence as the main security validation artifact.
+    docker run --rm \
+      -v "<repo-path>:/project" \
+      aquasec/trivy:latest fs --severity HIGH,CRITICAL --no-progress /project
+
+The local Windows/Git Bash environment caused path and output handling issues
+during that early manual attempt, so the scan output was captured as an
+execution note rather than a clean vulnerability report.
+
+
+Current scanning approach (CI pipeline)
+---------------------------------------
+Trivy is now installed inside the Jenkins agent container and is invoked
+from each pipeline via jenkins/shared.groovy -> runTrivyScan(tag, failOnHigh):
+
+  - Jenkinsfile.dev    : advisory only (reports CRITICAL, does not fail)
+  - Jenkinsfile.stage  : advisory only
+  - Jenkinsfile.master : gate (fails on HIGH/CRITICAL findings)
+
+Each microservice image produced by the pipeline (auth, identity, form,
+promotion, notification, gateway, dashboard, file) is scanned individually
+right after the Build Docker Images stage and before deployment.
+
+Reproduce locally with the same image tag the pipeline uses:
+
+    trivy image --severity HIGH,CRITICAL --no-progress \
+      circleguard-auth-service:<IMAGE_TAG>
+
+
+Complementary security validation
+---------------------------------
+OWASP ZAP baseline scan is the main runtime security validation artifact;
+see security/README.md and security/zap-scan.sh.

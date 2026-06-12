@@ -65,8 +65,9 @@ Nuestra estrategia de branching se mapea de forma directa e inequívoca con la i
 
 ## 3. Tablero de Gestión del Proyecto (GitHub Projects)
 
-> **Enlace al Tablero Activo**: [Acceso al Tablero de Gestión del Proyecto (GitHub Projects)](URL)
+El tablero activo del proyecto está disponible en la pestaña **Projects** del repositorio en GitHub:
 
+> 🔗 https://github.com/MarianaDeLaCruz06/circle-guard-public/projects
 
 Para el seguimiento diario y visual del ciclo de vida de desarrollo, se utiliza un tablero de gestión con las siguientes columnas:
 - **Backlog**: Ideas, requerimientos futuros y mejoras de fases posteriores.
@@ -75,4 +76,4 @@ Para el seguimiento diario y visual del ciclo de vida de desarrollo, se utiliza 
 - **Review / QA**: Código en proceso de Pull Request o bajo análisis en el pipeline de `stage`.
 - **Done**: Tareas completadas que cumplen al 100% con la Definition of Done.
 
-Cada hu tiene sus respectivos criterios de aceptacion y definition of done, la hu se considera terminada cuando se cumplen todos los criterios de aceptacion y se cumple con la definition of done.
+Cada historia de usuario (HU) tiene sus respectivos criterios de aceptación y Definition of Done; la HU se considera terminada cuando se cumplen todos los criterios de aceptación y la DoD.
