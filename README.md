@@ -1,5 +1,12 @@
 # 🛡️ CircleGuard Monorepo
 
+### Developers
+- **Mariana De La Cruz**
+- **Valentina Gómez**
+- **Alexis Delgado**
+
+### Video: [![Circle-Guard-Video-Youtube](https://www.youtube.com/watch?v=LA23jlWIMEE)](https://www.youtube.com/watch?v=LA23jlWIMEE)
+
 **Absolute Privacy. High-Speed Containment. Secure Campus.**
 
 CircleGuard is a state-of-the-art university contact tracing and fencing system designed to identify interconnected contact groups ("Circles") and apply rapid health fences while preserving individual anonymity.
